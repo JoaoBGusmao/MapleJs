@@ -1,4 +1,4 @@
 import 'dotenv/config';
-import server from './src/server';
+import Server from './src/server';
 
-server(8484);
+Server(8484, 7484);

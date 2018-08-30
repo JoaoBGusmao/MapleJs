@@ -1,3 +1,10 @@
 import 'dotenv/config';
+import Server from './src/server';
 
-console.log(`Etaaa ${process.env.TEST}`);
+const bootServer = (port) => {
+  // Connection with center
+
+  Server(port);
+};
+
+bootServer(7484);
