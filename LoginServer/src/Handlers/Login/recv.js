@@ -1,9 +1,13 @@
 export default (reader) => {
-  const login = reader.readString();
-  const password = reader.readString();
+  try {
+    const login = reader.readString();
+    const password = reader.readString();
 
-  return ({
-    login,
-    password,
-  });
+    return ({
+      login,
+      password,
+    });
+  } catch (err) {
+    return {};
+  }
 };

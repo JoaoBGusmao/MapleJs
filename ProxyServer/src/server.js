@@ -5,10 +5,52 @@ import { PacketWriter } from 'mapleendian';
 import MapleSocket from './MapleSocket';
 // import PacketWriter from './PacketWriter';
 
+const realServer = (serverPort) => {
+  const server = new net.Socket();
+  let intervalConnect = false;
+
+  const connect = port => server.connect(port, '127.0.0.1');
+
+  const launchIntervalConnect = (port) => {
+    if (intervalConnect !== false) {
+      return;
+    }
+    intervalConnect = setInterval(() => connect(port), 5000);
+  };
+
+  const clearIntervalConnect = () => {
+    if (!intervalConnect) {
+      return;
+    }
+
+    clearInterval(intervalConnect);
+    intervalConnect = false;
+  };
+
+  server.on('connect', () => {
+    clearIntervalConnect();
+  });
+
+  server.on('close', () => {
+    console.log('connection closed with real server.');
+    launchIntervalConnect(serverPort);
+  });
+
+  server.on('error', () => {
+    console.log('connection failed with real server.');
+    launchIntervalConnect(serverPort);
+  });
+
+  connect(serverPort);
+
+  return server;
+};
+
 export default (port, serverPort) => {
   const proxyServer = net.createServer();
 
   proxyServer.on('connection', (socket) => {
+    console.log('Proxy connection accepted');
     const sessionId = uid();
     const currentSocket = socket;
     const sequence = {
@@ -16,8 +58,7 @@ export default (port, serverPort) => {
       server: new Uint8Array(crypto.randomBytes(4)),
     };
 
-    const server = new net.Socket();
-    server.connect(serverPort, '127.0.0.1');
+    const server = realServer(serverPort);
 
     currentSocket.header = true;
     currentSocket.nextBlockLen = 4;
