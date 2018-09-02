@@ -12,7 +12,8 @@ export default (port) => {
       const data = JSON.parse(receivedData);
       const buffer = Buffer.from(data.packet);
       const incommingPacket = new PacketReader(buffer);
-      handler(incommingPacket.readUInt16(), incommingPacket);
+
+      handler(incommingPacket.readUInt16(), incommingPacket, socket);
     });
   });
 

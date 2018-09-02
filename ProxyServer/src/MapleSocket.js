@@ -171,7 +171,6 @@ var aes = require('crypto').createCipheriv('aes-256-ecb', aesKey, '');
 
 Socket.transformAES = (data, sequence) => {
   var length = data.length;
-  console.log(sequence);
   var sequenceCopy = new Buffer([
     sequence[0], sequence[1], sequence[2], sequence[3],
     sequence[0], sequence[1], sequence[2], sequence[3],

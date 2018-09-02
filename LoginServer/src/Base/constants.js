@@ -3,5 +3,5 @@ export const RECEIVE_OPCODES = {
 };
 
 export const SEND_OPCODES = {
-
+  LOGIN_STATUS: 0x00,
 };

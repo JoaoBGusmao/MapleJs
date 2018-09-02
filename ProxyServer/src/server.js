@@ -117,6 +117,19 @@ export default (port, serverPort) => {
       }
       currentSocket.resume();
     });
+
+    server.on('data', (data) => {
+      let buffer = Buffer.alloc(4);
+      MapleSocket.generateHeader(buffer, currentSocket.sequence.server, data.length, -(83 + 1));
+      currentSocket.write(buffer);
+
+      buffer = data;
+      MapleSocket.encryptData(buffer, currentSocket.sequence.server);
+
+      currentSocket.sequence.server = MapleSocket.morphSequence(currentSocket.sequence.server);
+
+      currentSocket.write(buffer);
+    });
   });
 
   proxyServer.listen(port);
