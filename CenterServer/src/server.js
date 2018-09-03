@@ -1,4 +1,5 @@
 import net from 'net';
+import handleOperation from './Handlers';
 
 export default (port) => {
   const centerServer = net.createServer();
@@ -10,7 +11,7 @@ export default (port) => {
       const request = JSON.parse(data);
       const { operation } = request;
 
-      // await handleOperation(operation, request.data);
+      await handleOperation(operation, request.data);
 
       const response = {
         id: request.id,
