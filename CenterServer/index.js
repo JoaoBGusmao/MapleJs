@@ -1,3 +1,4 @@
 import 'dotenv/config';
+import Server from './src/server';
 
-console.log(`Etaaa ${process.env.TEST}`);
+Server(9595);

@@ -1,8 +1,9 @@
 import 'dotenv/config';
 import Server from './src/server';
+import { connectCenter } from './src/center';
 
 const bootServer = (port) => {
-  // Connection with center
+  connectCenter();
 
   Server(port);
 };

@@ -3,7 +3,6 @@ import crypto from 'crypto';
 import uid from 'uuid/v1';
 import { PacketWriter } from 'mapleendian';
 import MapleSocket from './MapleSocket';
-// import PacketWriter from './PacketWriter';
 
 const realServer = (serverPort) => {
   const server = new net.Socket();
@@ -85,6 +84,8 @@ export default (port, serverPort) => {
     currentSocket.on('data', (receivedData) => {
       currentSocket.pause();
 
+      console.log('received', Date.now());
+
       const parsed = JSON.parse(receivedData);
       const packetData = Buffer.from(parsed.packet);
       const temp = currentSocket.buffer;
@@ -128,6 +129,7 @@ export default (port, serverPort) => {
 
       currentSocket.sequence.server = MapleSocket.morphSequence(currentSocket.sequence.server);
 
+      console.log('sent', Date.now());
       currentSocket.write(buffer);
     });
   });
