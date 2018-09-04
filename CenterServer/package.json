@@ -17,7 +17,10 @@
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "dotenv": "^6.0.0",
     "eslint": "^5.4.0",
-    "ramda": "^0.25.0"
+    "md5": "^2.2.1",
+    "mysql2": "^1.6.1",
+    "ramda": "^0.25.0",
+    "sequelize": "^4.38.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

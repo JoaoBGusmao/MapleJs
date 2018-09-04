@@ -1,6 +1,7 @@
 import recv from './recv';
 import { LoginFailed } from './send';
 import { askCenter } from '../../center';
+import { LOGIN_RESPONSE } from '../../Base/constants';
 
 /* Business logic of LOGIN
  * Handler name: LoginPasswordHandler
@@ -32,10 +33,8 @@ export default async (reader, client) => {
 
     console.log(loginResponse);
 
-    return client.write(LoginFailed({}));
+    return client.write(LoginFailed({ reason: LOGIN_RESPONSE.WRONG_PASSWORD }));
   } catch (err) {
-    // console.log('error', err);
+    return client.write(LoginFailed({ reason: LOGIN_RESPONSE.SYSTEM_FAILURE }));
   }
-
-  return [];
 };

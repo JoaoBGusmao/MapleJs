@@ -1,10 +1,10 @@
 export default (reader) => {
   try {
-    const login = reader.readString();
+    const username = reader.readString();
     const password = reader.readString();
 
     return ({
-      login,
+      username,
       password,
     });
   } catch (err) {

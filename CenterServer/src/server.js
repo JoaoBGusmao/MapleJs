@@ -9,13 +9,13 @@ export default (port) => {
 
     socket.on('data', async (data) => {
       const request = JSON.parse(data);
-      const { operation } = request;
+      const { operation } = request.data;
 
-      await handleOperation(operation, request.data);
+      const databaseResponse = await handleOperation(operation, request.data.data);
 
       const response = {
         id: request.id,
-        data: 'nothing here',
+        data: databaseResponse,
       };
 
       socket.write(JSON.stringify(response));

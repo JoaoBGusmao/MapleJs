@@ -16,27 +16,25 @@ export const connectCenter = () => {
   });
 };
 
-export const askCenter = (data) => {
-  return new Promise((resolve, reject) => {
-    const requestId = uid();
+export const askCenter = data => new Promise((resolve, reject) => {
+  const requestId = uid();
 
-    const request = JSON.stringify({
-      id: requestId,
-      data,
-    });
-
-    centerQueue.push({
-      id: requestId,
-      resolve,
-      reject,
-    });
-
-    server.write(request);
-
-    setTimeout(() => {
-      reject(new Error('Center Timeout'));
-    }, 2000);
+  const request = JSON.stringify({
+    id: requestId,
+    data,
   });
-};
+
+  centerQueue.push({
+    id: requestId,
+    resolve,
+    reject,
+  });
+
+  server.write(request);
+
+  setTimeout(() => {
+    reject(new Error('Center Timeout'));
+  }, 2000);
+});
 
 export default server;
