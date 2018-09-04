@@ -1,16 +1,13 @@
-import md5 from 'md5';
 import db from '../Models';
 
 export const nothing = () => {};
 
-export const auth = async (username, password) => {
+export const getAccount = async (username) => {
   try {
-    const hashPassword = md5(password);
     const userData = await db.accounts.findOne({
-      attributes: ['account_id'],
+      attributes: ['password', 'last_login'],
       where: {
         username,
-        password: hashPassword,
       },
     });
 
@@ -18,7 +15,7 @@ export const auth = async (username, password) => {
       throw new Error('Account not found');
     }
 
-    return { success: true };
+    return { success: true, account: userData };
   } catch (error) {
     return { success: false, error };
   }

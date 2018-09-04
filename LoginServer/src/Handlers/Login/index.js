@@ -31,9 +31,19 @@ export default async (reader, client) => {
       data,
     });
 
-    console.log(loginResponse);
+    if (loginResponse.success) {
+      return client.write(LoginFailed({ reason: 0 }));
+    }
 
-    return client.write(LoginFailed({ reason: LOGIN_RESPONSE.WRONG_PASSWORD }));
+    if (loginResponse.failedReason === 'LOGIN_NOT_FOUND') {
+      return client.write(LoginFailed({ reason: LOGIN_RESPONSE.LOGIN_NOT_FOUND }));
+    }
+
+    if (loginResponse.failedReason === 'WRONG_PASSWORD') {
+      return client.write(LoginFailed({ reason: LOGIN_RESPONSE.WRONG_PASSWORD }));
+    }
+
+    return client.write(LoginFailed({ reason: LOGIN_RESPONSE.SYSTEM_FAILURE }));
   } catch (err) {
     return client.write(LoginFailed({ reason: LOGIN_RESPONSE.SYSTEM_FAILURE }));
   }
