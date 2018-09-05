@@ -1,3 +1,3 @@
-export default () => {
-  console.log('Handler not found');
+export default ({ header }) => {
+  console.log('Handler not found', header);
 };

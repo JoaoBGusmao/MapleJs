@@ -1,5 +1,5 @@
 import recv from './recv';
-import { LoginFailed } from './send';
+import { LoginFailed, LoginSuccess } from './send';
 import { askCenter } from '../../center';
 import { LOGIN_RESPONSE } from '../../Base/constants';
 
@@ -32,7 +32,7 @@ export default async (reader, client) => {
     });
 
     if (loginResponse.success) {
-      return client.write(LoginFailed({ reason: 0 }));
+      return client.write(LoginSuccess());
     }
 
     if (loginResponse.failedReason === 'LOGIN_NOT_FOUND') {

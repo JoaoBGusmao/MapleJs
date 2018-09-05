@@ -1,5 +1,6 @@
 import Sequelize from 'sequelize';
 import accounts from './accounts';
+import characters from './characters';
 
 // Models
 
@@ -19,6 +20,7 @@ const sequelize = new Sequelize(
 
 const models = {
   accounts: accounts.init(sequelize),
+  characters: characters.init(sequelize),
 };
 
 Object.values(models)

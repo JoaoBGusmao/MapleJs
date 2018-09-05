@@ -26,6 +26,10 @@ class Accounts extends Sequelize.Model {
       },
     );
   }
+
+  static associate(models) {
+    this.hasMany(models.characters, { foreignKey: 'account_id', as: 'characters' });
+  }
 }
 
 export default Accounts;

@@ -5,6 +5,7 @@ export const RECEIVE_OPCODES = {
 export const SEND_OPCODES = {
   LOGIN_STATUS: 0x00,
   SERVER_LIST: 0x0A,
+  CHAR_NAME_REQUEST: 0x0D,
 };
 
 export const LOGIN_RESPONSE = {
@@ -21,4 +22,11 @@ export const LOGIN_RESPONSE = {
   EMAIL_NOT_VERIFIED: 16,
   TOS: 23,
   REQUEST_DOWNLOAD: 27,
+};
+
+export const NAME_CHECK_RESPONSE = {
+  AVAILABLE: 0,
+  ALREADY_IN_USE: 1,
+  CANNOT_BE_USED: 2,
+  UNKNOWN_ERROR: 3,
 };
