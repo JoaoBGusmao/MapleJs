@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<imgdir name="Tips.img">
+    <imgdir name="info">
+        <imgdir name="0">
+            <int name="levelMin" value="1"/>
+            <int name="levelMax" value="5"/>
+            <int name="interval" value="30000"/>
+            <int name="all" value="20"/>
+            <string name="tip" value="aprendiz"/>
+        </imgdir>
+        <imgdir name="1">
+            <int name="levelMin" value="6"/>
+            <int name="levelMax" value="10"/>
+            <int name="interval" value="60000"/>
+            <int name="all" value="40"/>
+            <string name="tip" value="aprendiz 2"/>
+        </imgdir>
+        <imgdir name="2">
+            <int name="levelMin" value="11"/>
+            <int name="levelMax" value="20"/>
+            <int name="interval" value="300000"/>
+            <int name="all" value="50"/>
+            <string name="tip" value="aprendiz 3"/>
+        </imgdir>
+        <imgdir name="3">
+            <int name="levelMin" value="21"/>
+            <int name="levelMax" value="30"/>
+            <int name="interval" value="600000"/>
+            <int name="all" value="60"/>
+            <string name="tip" value="aprendiz 4"/>
+        </imgdir>
+        <imgdir name="4">
+            <int name="levelMin" value="31"/>
+            <int name="levelMax" value="70"/>
+            <int name="interval" value="600000"/>
+            <int name="all" value="70"/>
+            <string name="tip" value="aprendiz 5"/>
+        </imgdir>
+        <imgdir name="5">
+            <int name="levelMin" value="71"/>
+            <int name="levelMax" value="120"/>
+            <int name="interval" value="600000"/>
+            <int name="all" value="80"/>
+            <string name="tip" value="aprendiz 6"/>
+        </imgdir>
+        <imgdir name="6">
+            <int name="levelMin" value="121"/>
+            <int name="levelMax" value="999"/>
+            <int name="interval" value="600000"/>
+            <int name="all" value="100"/>
+            <string name="tip" value="aprendiz 7"/>
+        </imgdir>
+    </imgdir>
+    <imgdir name="all">
+        <string name="0" value="Por favor, não use linguagem imprópria."/>
+        <string name="1" value="NÃO serão toleradas ofensas, verbais ou não. Quem ofender será bloqueado do jogo."/>
+        <string name="2" value="Nossos GMs NUNCA pedirão seu nome de usuário, senha ou informações pessoais."/>
+        <string name="3" value="NUNCA diga seu nome de usuário ou senha para NINGUÉM, mesmo para administradores."/>
+        <string name="4" value="Usuários que abusarem dos Termos de Serviço serão bloqueados do jogo."/>
+        <string name="5" value="Quem usar, vender, trocar ou promover hackers ou ferramentas de hackers será bloqueado do jogo."/>
+        <string name="6" value="Você pode usar as &apos;Opções de Sistema&apos; no menu para alterar suas configurações – sons, gráficos, etc."/>
+        <string name="7" value="Use as &apos;Opções de Jogo&apos; no menu para alterar configurações de bate-papo, trocas, sussurros, etc."/>
+        <string name="8" value="Digite &apos;/?&apos; na caixa de texto para ver a lista dos comandos disponíveis."/>
+        <string name="9" value="Itens de Cash podem ser comprados na Loja de Itens, usando Cash comprado em nosso site."/>
+        <string name="10" value="NUNCA abra um arquivo anexo desconhecido de uma janela de mensagem instantânea ou de e-mail."/>
+        <string name="11" value="Os Game Masters do MapleStory NUNCA enviam arquivos nem entram em contato fora do jogo."/>
+        <string name="12" value="Este é um jogo on-line, e a interação on-line envolve a comunicação com estranhos. NUNCA forneça informações pessoais como seu nome, idade, telefone e endereço para NINGUÉM que você não conheça. Proteja sua identidade!"/>
+    </imgdir>
+    <imgdir name="novice">
+        <string name="0" value="Use os atalhos do teclado (I, E, S, K, G, W, M, R, H) para acessar todos os menus rapidamente."/>
+        <string name="1" value="Para associar um item a um atalho de teclado, arraste o item do seu inventário para o slot rápido."/>
+        <string name="2" value="Procure portais escondidos para ampliar sua aventura!"/>
+        <string name="3" value="Pressione F1~F7 para fazer careta."/>
+        <string name="4" value="Use o portal em um mapa para ir para uma área diferente."/>
+        <string name="5" value="A maioria dos portais é exibida no minimapa como um ponto azul."/>
+        <string name="6" value="Ao sair da Ilha Victoria, você não poderá voltar à Ilha Maple."/>
+        <string name="7" value="Clique em &apos;Detalhes&apos; na janela de atributos para ter uma visão detalhada dos atributos do seu personagem."/>
+        <string name="8" value="Outros personagens ao seu redor serão mostrados, no minimapa, como pontos vermelhos."/>
+        <string name="9" value="Ficar parado recupera lentamente a barra de vida."/>
+        <string name="10" value="Para pegar um item, pressione &apos;Z&apos; ou &apos;0&apos; no teclado numérico."/>
+        <string name="11" value="Pressione CTRL para atacar e ALT para saltar."/>
+        <string name="12" value="Visite as lojas para comprar as poções e equipamentos necessários para sua jornada."/>
+        <string name="13" value="Quando você subir de nível, entre na janela de atributos para gastar os pontos de atributos ganhos."/>
+        <string name="14" value="Você só pode escolher uma classe. Ao escolher a primeira classe, o caminho do seu personagem será na classe escolhida."/>
+        <string name="15" value="Para usar com um item, entre no inventário de equipamentos e arraste o item para a janela de itens usados ou clique duas vezes no item desejado no inventário."/>
+        <string name="16" value="Pressione &apos;W&apos; para ver o mapa do mundo."/>
+        <string name="17" value="Pressione &apos;E&apos; para ver os itens usados."/>
+        <string name="18" value="Pressione &apos;I&apos; para abrir a janela de inventário de itens."/>
+        <string name="19" value="Pressione &apos;M&apos; para ver o minimapa."/>
+        <string name="20" value="Pressione &apos;K&apos; para abrir a janela de habilidades."/>
+        <string name="21" value="Pressione &apos;S&apos; para ver os atributos do personagem."/>
+        <string name="22" value="Para criar um grupo, digite &apos;/criargrupo&apos; na caixa de texto. Se você criar um grupo, será o líder dele."/>
+        <string name="23" value="Como líder do grupo, você pode convidar membros para ele. Para convidar um membro, digite &apos;/convidargrupo nome-do-personagem&apos; na caixa de texto ou clique no personagem desejado e escolha &quot;Convidar para Grupo&quot;. (até 6 membros)"/>
+        <string name="24" value="Sendo o membro do grupo, digite &apos;/expulsargrupo nome-do-personagem&apos; para expulsar um membro do seu grupo."/>
+        <string name="25" value="Para sair de um grupo, digite &apos;/sairgrupo&apos;."/>
+        <string name="26" value="Para ver as informações do seu grupo, digite &apos;/infogrupo&apos;."/>
+        <string name="27" value="Para aumentar ou reduzir o nível de fama de alguém, clique com o botão direito e classifique a fama nas informações do personagem."/>
+        <string name="28" value="Você pode aumentar ou abaixar o nível de fama de alguém uma vez por dia."/>
+        <string name="29" value="Você pode aumentar ou abaixar o nível de fama da mesma pessoa uma vez por mês."/>
+        <string name="30" value="NUNCA diga seu nome de usuário ou senha para NINGUÉM, mesmo para administradores."/>
+        <string name="31" value="Este é um jogo on-line, e a interação on-line envolve a comunicação com estranhos. NUNCA forneça informações pessoais como seu nome, idade, telefone e endereço para NINGUÉM que você não conheça. Proteja sua identidade!"/>
+        <string name="32" value="NUNCA abra um arquivo anexo desconhecido de uma janela de mensagem instantânea ou de um e-mail."/>
+        <string name="33" value="Os Game Masters do MapleStory NUNCA enviam arquivos nem entram em contato fora do jogo."/>
+        <string name="34" value="O Game Master NUNCA pede seu nome de usuário, senha ou informações pessoais."/>
+        <string name="35" value="Por favor, não use esse tipo de linguagem neste jogo."/>
+        <string name="36" value="NÃO serão toleradas ofensas, verbais ou não. Quem ofender será bloqueado do jogo."/>
+        <string name="37" value="Usuários que abusarem dos Termos de Serviço serão bloqueados do jogo."/>
+        <string name="38" value="Quem usar, vender, trocar ou promover hackers ou ferramentas de hackers será bloqueado do jogo."/>
+        <string name="39" value="Itens pagos podem ser comprados na Loja de Itens, usando Dinheiro Nexon comprado em nosso site."/>
+        <string name="40" value="Fale com os instrutores das cclasses em cada cidade para mudar de classe."/>
+        <string name="41" value="Para se tornar um bruxo, você precisa estar no nível 8. As outras profissões exigem no mínimo o nível 10."/>
+        <string name="42" value="São PROIBIDOS o compartilhamento, a venda e a troca de contas. Essas contas serão bloqueadas."/>
+    </imgdir>
+    <imgdir name="novice2">
+        <string name="0" value="Visite as lojas das cidades para comprar equipamentos e poções."/>
+        <string name="1" value="Alguns itens só podem ser usados por homens, outros por mulheres, ou só por alguém de uma determianda classe. Verifique tudo antes de comprar."/>
+        <string name="2" value="Você só pode escolher uma classe. Ao escolher a primeira classe, o caminho do seu personagem será na classe escolhida."/>
+        <string name="3" value="Depois de mudar de classe, tome cuidado: cada morte custará um pouco de pontos de experiência do seu personagem."/>
+        <string name="4" value="Por meio de missões, você pode adquirir itens que não estão disponíveis em lojas."/>
+        <string name="5" value="Você ganha mais espaços no inventário ao mudar de classe."/>
+        <string name="6" value="Mude de classe no nível mínimo necessário. Não serão dados mais pontos de habilidade para níveis anteriores."/>
+        <string name="7" value="Digite &apos;/trade nome-do-personagem&apos; para solicitar comércio com um usuário."/>
+        <string name="8" value="Para se tornar um bruxo, você precisa estar no nível 8. As outras profissões exigem no mínimo o nível 10."/>
+        <string name="9" value="Como líder do grupo, você pode convidar membros para ele. Para convidar um membro, digite &apos;/convidargrupo nome-do-personagem&apos; na caixa de texto ou clique no personagem desejado e escolha &quot;Convidar para Grupo&quot;. (até 6 membros)"/>
+        <string name="10" value="Sendo o membro do grupo, digite &apos;/expulsargrupo nome-do-personagem&apos; para expulsar um membro do seu grupo."/>
+        <string name="11" value="Para sair de um grupo, digite &apos;/sairgrupo&apos;."/>
+        <string name="12" value="Para ver as informações do seu grupo, digite &apos;/infogrupo&apos;."/>
+        <string name="13" value="Para aumentar ou reduzir o nível de fama de alguém, clique com o botão direito em outro personagem e classifique sua fama nas informações do personagem."/>
+        <string name="14" value="Você pode aumentar ou abaixar o nível de fama de alguém uma vez por dia."/>
+        <string name="15" value="Você pode aumentar ou abaixar o nível de fama da mesma pessoa uma vez por mês."/>
+        <string name="16" value="NUNCA diga seu nome de usuário ou senha para NINGUÉM, mesmo para administradores."/>
+        <string name="17" value="Este é um jogo on-line, e a interação on-line envolve a comunicação com estranhos. NUNCA forneça informações pessoais como seu nome, idade, telefone e endereço para NINGUÉM que você não conheça. Proteja sua identidade!"/>
+        <string name="18" value="NUNCA abra um arquivo anexo desconhecido de uma janela de mensagem instantânea ou de um e-mail."/>
+        <string name="19" value="Os Game Masters do MapleStory NUNCA enviam arquivos nem entram em contato fora do jogo."/>
+        <string name="20" value="Nossos GMs NUNCA pedirão seu nome de usuário, senha ou informações pessoais."/>
+        <string name="21" value="Por favor, não use esse tipo de linguagem neste jogo."/>
+        <string name="22" value="NÃO serão toleradas ofensas, verbais ou não. Quem ofender será bloqueado do jogo."/>
+        <string name="23" value="Usuários que abusarem dos Termos de Serviço e da Política de Usuários serão bloqueados do jogo."/>
+        <string name="24" value="Quem usar, vender, trocar ou promover hackers ou ferramentas de hackers será bloqueado do jogo."/>
+        <string name="25" value="Itens pagos podem ser comprados na Loja de Itens, usando Dinheiro Nexon comprado em nosso site."/>
+        <string name="26" value="NÃO é permitido trocar itens por presentes em Dinheiro Nexon. Se trocar, você será bloqueado do jogo."/>
+        <string name="27" value="São PROIBIDOS o compartilhamento, a venda e a troca de contas. Essas contas serão bloqueadas."/>
+    </imgdir>
+    <imgdir name="novice3">
+        <string name="0" value="O 2º nível de classe está disponível no nível 30 (você precisar estar no 1º nível)."/>
+        <string name="1" value="Habilidades passivas funcionam automaticamente depois de adquiridas."/>
+        <string name="2" value="Para usar uma habilidade ativa, arraste-a da janela de habilidades para um Slot Rápido, associando-a a um atalho de teclado."/>
+        <string name="3" value="Todos os pontos de habilidade ganhos antes do nível 30 devem ser gastos antes de subir para o 2º nível de classe."/>
+        <string name="4" value="Mude de classe no nível mínimo necessário pela classe. Não serão dados mais pontos de habilidade para níveis anteriores."/>
+        <string name="5" value="Depois da mudança de classe, você ganhará alguns pontos de habilidade a cada subida de nível."/>
+        <string name="6" value="Pontos de habilidade podem ser gastos na janela de habilidades."/>
+        <string name="7" value="Cuidado com os monstros poderosos das masmorras!"/>
+        <string name="8" value="Derrote um monstro poderoso ou cumpra uma missão para adquirir itens raros que não são encontrados em lojas."/>
+        <string name="9" value="Pontos de Maná (MP) são recuperados lentamente com o passar do tempo."/>
+        <string name="10" value="Habilidades que gastam MP não vão funcionar se sua barra de MP estiver vazia."/>
+        <string name="11" value="Digite &apos;/trade nome-do-personagem&apos; para solicitar comércio com um usuário."/>
+        <string name="12" value="Use os pergaminhos de retorno para voltar rapidamente a uma cidade."/>
+        <string name="13" value="Shurikens não desaparecem do seu inventário quando gastas. Elas podem ser recarregadas na loja de armaduras de cada cidade."/>
+        <string name="14" value="NUNCA diga seu nome de usuário ou senha para NINGUÉM, mesmo para administradores."/>
+        <string name="15" value="Este é um jogo on-line, e a interação on-line envolve a comunicação com estranhos. NUNCA forneça informações pessoais como seu nome, idade, telefone e endereço para NINGUÉM que você não conheça. Proteja sua identidade!"/>
+        <string name="16" value="NUNCA abra um arquivo anexo desconhecido de uma janela de mensagem instantânea ou de um e-mail."/>
+        <string name="17" value="Os Game Masters do MapleStory NUNCA enviam arquivos nem entram em contato fora do jogo."/>
+        <string name="18" value="Nossos GMs NUNCA pedirão seu nome de usuário, senha ou informações pessoais."/>
+        <string name="19" value="Por favor, não use esse tipo de linguagem neste jogo."/>
+        <string name="20" value="NÃO serão toleradas ofensas, verbais ou não. Quem ofender será bloqueado do jogo."/>
+        <string name="21" value="Usuários que abusarem dos Termos de Serviço e da Política de Usuários serão bloqueados do jogo."/>
+        <string name="22" value="Quem usar, vender, trocar ou promover hackers ou ferramentas de hackers será bloqueado do jogo."/>
+        <string name="23" value="Itens pagos podem ser comprados na Loja de Itens, usando Dinheiro Nexon comprado em nosso site."/>
+        <string name="24" value="NÃO é permitido trocar itens por presentes em Dinheiro Nexon. Se trocar, você será bloqueado do jogo."/>
+        <string name="25" value="São PROIBIDOS o compartilhamento, a venda e a troca de contas. Essas contas serão bloqueadas."/>
+        <string name="26" value="Ímãs de Meso e Bolsas de Itens estão disponíveis para seus bichos de estimação na Loja de Itens."/>
+    </imgdir>
+    <imgdir name="novice4">
+        <string name="0" value="A 2a mudança de classe está disponível no nível 30, se a 1a já tiver sido feita."/>
+        <string name="1" value="Ímãs de Meso e Bolsas de Itens estão disponíveis para seus bichos de estimação na Loja de Itens."/>
+        <string name="2" value="Todos os pontos de habilidade ganhos antes do nível 30 devem ser gastos antes de evoluir para o 2º nível de classe."/>
+        <string name="3" value="Recomendamos que os pontos de habilidade ganhos depois do nível 30 sejam gastos em habilidade do 2º nível de classe."/>
+        <string name="4" value="Aplique vários pergaminhos às suas armas e armaduras para deixá-las melhor."/>
+        <string name="5" value="Há uma loja 24 horas disponível nas masmorras; nela você pode comprar poções poderosas que não estão disponíveis nas cidades."/>
+        <string name="6" value="Ao subir ao 2º nível de classe, o Guerreiro pode escolher uma das três classes disponíveis: Soldado, Escudeiro ou Lanceiro."/>
+        <string name="7" value="Ao subir ao 2º nível de classe, o Arqueiro pode escolher uma das duas profissões disponíveis: Caçador ou Balestreiro."/>
+        <string name="8" value="Ao subir ao 2º nível de classe, o Bruxo pode escolher uma das três classes disponíveis: Feiticeiro (Fogo e Veneno), Feiticeiro (Gelo e Raio) ou Clérigo."/>
+        <string name="9" value="Ao subir ao 2º nível de classe, o Gatuno pode escolher uma das duas classes disponíveis: Mercenário ou Arruaceiro."/>
+        <string name="10" value="Algumas missões e itens exigem um certo nível de fama."/>
+        <string name="11" value="NUNCA diga seu nome de usuário ou senha para NINGUÉM, mesmo para administradores."/>
+        <string name="12" value="Este é um jogo on-line, e a interação on-line envolve a comunicação com estranhos. NUNCA forneça informações pessoais como seu nome, idade, telefone e endereço para NINGUÉM que você não conheça. Proteja sua identidade!"/>
+        <string name="13" value="NUNCA abra um arquivo anexo desconhecido de uma janela de mensagem instantânea ou de um e-mail."/>
+        <string name="14" value="Os Game Masters do MapleStory NUNCA enviam arquivos nem entram em contato fora do jogo."/>
+        <string name="15" value="Nossos GMs NUNCA pedirão seu nome de usuário, senha ou informações pessoais."/>
+        <string name="16" value="Por favor, não use esse tipo de linguagem neste jogo."/>
+        <string name="17" value="NÃO serão toleradas ofensas, verbais ou não. Quem ofender será bloqueado do jogo."/>
+        <string name="18" value="Usuários que abusarem dos Termos de Serviço e da Política de Usuários serão bloqueados do jogo."/>
+        <string name="19" value="Quem usar, vender, trocar ou promover hackers ou ferramentas de hackers será bloqueado do jogo."/>
+        <string name="20" value="Itens pagos podem ser comprados na Loja de Itens, usando Dinheiro Nexon comprado em nosso site."/>
+        <string name="21" value="NÃO é permitido trocar itens por presentes em Dinheiro Nexon. Se trocar, você será bloqueado do jogo."/>
+        <string name="22" value="São PROIBIDOS o compartilhamento, a venda e a troca de contas. Essas contas serão bloqueadas."/>
+    </imgdir>
+    <imgdir name="novice5">
+        <string name="0" value="A 3a mudança de classe está disponível no nível 70 (você já deve ter feito a 2a mudança)."/>
+        <string name="1" value="Todos os pontos de habilidade ganhos antes do nível 70 devem ser gastos antes de evoluir para o 3º nível de classe."/>
+        <string name="2" value="Use a sauna no Hotel da Selva do Sono para recuperar seu HP e MP mais rapidamente."/>
+        <string name="3" value="Alguns monstros são vulneráveis a certos ataques elementares."/>
+        <string name="4" value="NUNCA diga seu nome de usuário ou senha para NINGUÉM, mesmo para administradores."/>
+        <string name="5" value="Este é um jogo on-line, e a interação on-line envolve a comunicação com estranhos. NUNCA forneça informações pessoais como seu nome, idade, telefone e endereço para NINGUÉM que você não conheça. Proteja sua identidade!"/>
+        <string name="6" value="NUNCA abra um arquivo anexo desconhecido de uma janela de mensagem instantânea ou de um e-mail."/>
+        <string name="7" value="Os Game Masters do MapleStory NUNCA enviam arquivos nem entram em contato fora do jogo."/>
+        <string name="8" value="Nossos GMs NUNCA pedirão seu nome de usuário, senha ou informações pessoais."/>
+        <string name="9" value="Por favor, não use esse tipo de linguagem neste jogo."/>
+        <string name="10" value="NÃO serão toleradas ofensas, verbais ou não. Quem ofender será bloqueado do jogo."/>
+        <string name="11" value="Usuários que abusarem dos Termos de Serviço e da Política de Usuários serão bloqueados do jogo."/>
+        <string name="12" value="Quem usar, vender, trocar ou promover hackers ou ferramentas de hackers será bloqueado do jogo."/>
+        <string name="13" value="Itens pagos podem ser comprados na Loja de Itens, usando Dinheiro Nexon comprado em nosso site."/>
+        <string name="14" value="NÃO é permitido trocar itens por presentes em Dinheiro Nexon. Se trocar, você será bloqueado do jogo."/>
+        <string name="15" value="São PROIBIDOS o compartilhamento, a venda e a troca de contas. Essas contas serão bloqueadas."/>
+    </imgdir>
+    <imgdir name="novice6">
+        <string name="0" value="O 4º nível de classe está disponível no nível 120, depois da 3a mudança."/>
+        <string name="1" value="É melhor usar os pontos de habilidade ganhos depois do nível 120 DEPOIS do 4º nível de classe."/>
+        <string name="2" value="Todos os pontos de habilidade ganhos antes do nível 120 precisam ser gastos antes de subir para o 4º nível de classe."/>
+        <string name="3" value="Usuários que abusarem dos Termos de Serviço e da Política de Usuários serão bloqueados do jogo."/>
+        <string name="4" value="Quem usar, vender, trocar ou promover hackers ou ferramentas de hackers será bloqueado do jogo."/>
+        <string name="5" value="Itens pagos podem ser comprados na Loja de Itens, usando Dinheiro Nexon comprado em nosso site."/>
+        <string name="6" value="NÃO é permitido trocar itens por presentes da Loja de Itens. Se trocar, você será bloqueado do jogo."/>
+        <string name="7" value="São PROIBIDOS o compartilhamento, a venda e a troca de contas. Essas contas serão bloqueadas."/>
+    </imgdir>
+    <imgdir name="novice7">
+    </imgdir>
+</imgdir>
