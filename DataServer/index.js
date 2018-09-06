@@ -1,8 +1,5 @@
 import 'dotenv/config';
 import handleOperation from './src/DataProcessor';
+import Server from './src/server';
 
-const data = {
-  operation: 'ETC/GET_MAKE_CHAR_INFO',
-};
-
-const result = handleOperation(data.operation);
+Server(3535);
