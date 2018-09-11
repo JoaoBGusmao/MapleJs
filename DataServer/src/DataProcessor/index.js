@@ -6,6 +6,4 @@ const getHandler = cond([
   [T, () => {}],
 ]);
 
-export default (operation, data) => {
-  getHandler({ operation, data });
-};
+export default (operation, data) => getHandler({ operation, data });

@@ -5,6 +5,7 @@ import ServerList from './ServerList';
 import ServerStatus from './ServerStatus';
 import CharList from './CharList';
 import NameCheck from './NameCheck';
+import CreateCharacter from './CreateCharacter';
 
 const getHandler = cond([
   [propEq('header', 0x01), ({ reader, socket }) => Login(reader, socket)],
@@ -12,6 +13,7 @@ const getHandler = cond([
   [propEq('header', 0x06), ({ reader, socket }) => ServerStatus(reader, socket)],
   [propEq('header', 0x0B), ({ reader, socket }) => ServerList(reader, socket)],
   [propEq('header', 0x15), ({ reader, socket }) => NameCheck(reader, socket)],
+  [propEq('header', 0x16), ({ reader, socket }) => CreateCharacter(reader, socket)],
   [T, NoHandler],
 ]);
 

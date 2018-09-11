@@ -1,0 +1,3 @@
+write: writeUInt8 || writeUInt16
+writeInt: writeUInt32
+writeShort: writeUInt16

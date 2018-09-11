@@ -6,6 +6,7 @@ export const SEND_OPCODES = {
   LOGIN_STATUS: 0x00,
   SERVER_LIST: 0x0A,
   CHAR_NAME_REQUEST: 0x0D,
+  DELETE_CHAR_RESPONSE: 0x0F,
 };
 
 export const LOGIN_RESPONSE = {
