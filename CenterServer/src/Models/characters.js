@@ -9,12 +9,13 @@ class Accounts extends Sequelize.Model {
           type: Sequelize.INTEGER,
           primaryKey: true,
         },
-        username: Sequelize.STRING,
+        name: Sequelize.STRING,
         created_at: Sequelize.DATE,
         last_login: Sequelize.DATE,
       },
       {
         tableName: 'characters',
+        timestamps: false,
         sequelize,
       },
     );

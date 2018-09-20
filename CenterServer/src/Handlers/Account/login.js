@@ -13,7 +13,7 @@ export default async ({ username, password }) => {
       return { success: false, failedReason: 'WRONG_PASSWORD' };
     }
 
-    return { success: true };
+    return { success: true, account: doAuth.account };
   } catch (error) {
     return { success: false, error };
   }

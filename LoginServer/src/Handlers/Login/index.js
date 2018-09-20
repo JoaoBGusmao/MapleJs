@@ -2,6 +2,8 @@ import recv from './recv';
 import { LoginFailed, LoginSuccess } from './send';
 import { askCenter } from '../../center';
 import { LOGIN_RESPONSE } from '../../Base/constants';
+import store from '../../Base/Redux/store';
+import { updateConnection } from '../../Base/Redux/Actions/connection';
 
 /* Business logic of LOGIN
  * Handler name: LoginPasswordHandler
@@ -22,7 +24,9 @@ import { LOGIN_RESPONSE } from '../../Base/constants';
  * - Authentication failed with status 7 (maybe unknown error)
  */
 
-export default async (reader, client) => {
+export default async (reader, socket) => {
+  const client = socket;
+
   try {
     const data = recv(reader);
 
@@ -32,6 +36,9 @@ export default async (reader, client) => {
     });
 
     if (loginResponse.success) {
+      client.account = {};
+      client.account.account_id = loginResponse.account.account_id;
+      store.dispatch(updateConnection(client));
       return client.write(LoginSuccess());
     }
 
@@ -45,6 +52,7 @@ export default async (reader, client) => {
 
     return client.write(LoginFailed({ reason: LOGIN_RESPONSE.SYSTEM_FAILURE }));
   } catch (err) {
+    console.log(err);
     return client.write(LoginFailed({ reason: LOGIN_RESPONSE.SYSTEM_FAILURE }));
   }
 };

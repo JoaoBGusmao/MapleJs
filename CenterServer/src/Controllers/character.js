@@ -1,6 +1,17 @@
 import db from '../Models';
 
-export const nothing = () => { };
+export const registerNewCharacter = async (charData) => {
+  try {
+    await db.characters.create({
+      name: charData.name,
+      account_id: charData.account_id,
+    });
+
+    return { sucess: true };
+  } catch (error) {
+    return { success: false, error };
+  }
+};
 
 export const characterExists = async (name) => {
   try {

@@ -5,7 +5,7 @@ export const nothing = () => {};
 export const getAccount = async (username) => {
   try {
     const userData = await db.accounts.findOne({
-      attributes: ['password', 'last_login'],
+      attributes: ['account_id', 'password', 'last_login'],
       where: {
         username,
       },

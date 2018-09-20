@@ -1,4 +1,4 @@
-import { characterExists } from '../../Controllers/character';
+import { characterExists, registerNewCharacter } from '../../Controllers/character';
 
 export const nameCheck = async ({ name }) => {
   try {
@@ -17,4 +17,12 @@ export const nameCheck = async ({ name }) => {
   }
 };
 
-export const nothing = () => {};
+export const newCharacter = async (charData) => {
+  try {
+    await registerNewCharacter(charData);
+
+    return { success: true };
+  } catch (error) {
+    return { sucess: false, error };
+  }
+};

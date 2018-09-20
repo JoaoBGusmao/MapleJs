@@ -1,5 +1,6 @@
 import recv from './recv';
 import { askData } from '../../data';
+import { askCenter } from '../../center';
 import deleteCharResponse from '../DeleteCharacter/send';
 
 /* Business logic of CreateChar
@@ -43,6 +44,8 @@ const validadeCharCreation = async ({
     const makeCharInfo = await askData({ operation: 'ETC/GET_MAKE_CHAR_INFO' });
     const genderData = gender === 0 ? makeCharInfo.CharMale : makeCharInfo.CharFemale;
 
+    // TODO: Check for name again
+
     const hasValidSelection = (
       checkData(face, genderData[0])
       && checkData(hair, genderData[1])
@@ -66,6 +69,15 @@ export default async (reader, client) => {
     if (!isValidSelection) {
       return client.write(deleteCharResponse({ cid: 0, state: 9 }));
     }
+
+    newCharData.account_id = client.account.account_id;
+
+    const creationResult = await askCenter({
+      operation: 'CHARACTER/NEW',
+      data: newCharData,
+    });
+
+    console.log(creationResult);
 
     return [];
   } catch (err) {
