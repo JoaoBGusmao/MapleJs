@@ -1,13 +1,11 @@
-import net from 'net';
+import dgram from 'dgram';
 import uid from 'uuid/v1';
 
-const server = new net.Socket();
+const server = dgram.createSocket('udp4');
 const centerQueue = [];
 
-export const connectCenter = () => {
-  server.connect(9595, '127.0.0.1');
-
-  server.on('data', (data) => {
+export const initCenter = () => {
+  server.on('message', (data) => {
     const response = JSON.parse(data);
     const requestOnQueue = centerQueue.find(req => req.id === response.id);
     const { resolve } = requestOnQueue;
@@ -30,7 +28,8 @@ export const askCenter = data => new Promise((resolve, reject) => {
     reject,
   });
 
-  server.write(request);
+  const message = Buffer.from(request);
+  server.send(message, 0, message.length, 9595, '127.0.0.1');
 
   setTimeout(() => {
     reject(new Error('Center Timeout'));

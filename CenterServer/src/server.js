@@ -1,26 +1,23 @@
-import net from 'net';
+import dgram from 'dgram';
 import handleOperation from './Handlers';
 
 export default (port) => {
-  const centerServer = net.createServer();
+  const centerServer = dgram.createSocket('udp4');
 
-  centerServer.on('connection', (socket) => {
-    console.log('Connection with center accepted');
+  centerServer.on('message', async (data, remote) => {
+    const request = JSON.parse(data);
+    const { operation } = request.data;
 
-    socket.on('data', async (data) => {
-      const request = JSON.parse(data);
-      const { operation } = request.data;
+    const databaseResponse = await handleOperation(operation, request.data.data);
 
-      const databaseResponse = await handleOperation(operation, request.data.data);
+    const response = {
+      id: request.id,
+      data: databaseResponse,
+    };
 
-      const response = {
-        id: request.id,
-        data: databaseResponse,
-      };
-
-      socket.write(JSON.stringify(response));
-    });
+    const message = Buffer.from(JSON.stringify(response));
+    centerServer.send(message, 0, message.length, remote.port, remote.address);
   });
 
-  centerServer.listen(port);
+  centerServer.bind(port);
 };
