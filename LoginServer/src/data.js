@@ -1,13 +1,11 @@
-import net from 'net';
+import dgram from 'dgram';
 import uid from 'uuid/v1';
 
-const server = new net.Socket();
+const server = dgram.createSocket('udp4');
 const dataQueue = [];
 
-export const connectData = () => {
-  server.connect(3535, '127.0.0.1');
-
-  server.on('data', (data) => {
+export const initData = () => {
+  server.on('message', (data) => {
     const response = JSON.parse(data);
     const requestOnQueue = dataQueue.find(req => req.id === response.id);
     const { resolve } = requestOnQueue;
@@ -30,7 +28,8 @@ export const askData = data => new Promise((resolve, reject) => {
     reject,
   });
 
-  server.write(request);
+  const message = Buffer.from(request);
+  server.send(message, 0, message.length, 9595, '127.0.0.1');
 
   setTimeout(() => {
     reject(new Error('DataServer Timeout'));

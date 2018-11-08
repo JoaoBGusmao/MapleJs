@@ -1,11 +1,11 @@
 import 'dotenv/config';
 import Server from './src/server';
 import { initCenter } from './src/center';
-import { connectData } from './src/data';
+import { initData } from './src/data';
 
 const bootServer = (port) => {
   initCenter();
-  connectData();
+  initData();
 
   Server(port);
 };

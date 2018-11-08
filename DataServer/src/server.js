@@ -1,26 +1,23 @@
-import net from 'net';
+import dgram from 'dgram';
 import handleOperation from './DataProcessor';
 
 export default (port) => {
-  const dataServer = net.createServer();
+  const dataServer = dgram.createSocket('udp4');
 
-  dataServer.on('connection', (socket) => {
-    console.log('Connection with data accepted');
+  dataServer.on('message', async (data, remote) => {
+    const request = JSON.parse(data);
+    const { operation } = request.data;
 
-    socket.on('data', async (data) => {
-      const request = JSON.parse(data);
-      const { operation } = request.data;
+    const dataResponse = await handleOperation(operation, request.data.data);
 
-      const dataResponse = await handleOperation(operation, request.data.data);
+    const response = {
+      id: request.id,
+      data: dataResponse,
+    };
 
-      const response = {
-        id: request.id,
-        data: dataResponse,
-      };
-
-      socket.write(JSON.stringify(response));
-    });
+    const message = Buffer.from(JSON.stringify(response));
+    dataServer.send(message, 0, message.length, remote.port, remote.address);
   });
 
-  dataServer.listen(port);
+  dataServer.bind(port);
 };
