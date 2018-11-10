@@ -32,6 +32,7 @@ export const CenterCommunication = data => new Promise((resolve, reject) => {
   server.send(message, 0, message.length, 9595, '127.0.0.1');
 
   setTimeout(() => {
+    // TODO: retry
     reject(new Error('Center Timeout'));
   }, 2000);
 });

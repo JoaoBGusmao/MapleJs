@@ -21,7 +21,7 @@
     "eslint": "^5.4.0",
     "jest": "^23.5.0",
     "jest-cli": "^23.5.0",
-    "mapleendian": "^1.0.5",
+    "mapleendian": "^1.0.9",
     "ramda": "^0.25.0",
     "redux": "^4.0.0",
     "uuid": "^3.3.2"

@@ -19,7 +19,7 @@ export default (port) => {
 
       store.dispatch(updateConnection(socket));
 
-      handler(incommingPacket.readUInt16(), incommingPacket, socket);
+      handler(incommingPacket.opCode, incommingPacket, socket);
     });
   });
 

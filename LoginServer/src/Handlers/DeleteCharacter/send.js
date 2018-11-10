@@ -3,8 +3,8 @@ import { SEND_OPCODES } from '../../Base/constants';
 
 export default ({ cid, state }) => {
   const Writer = new PacketWriter(SEND_OPCODES.DELETE_CHAR_RESPONSE);
-  Writer.writeUInt32(cid);
-  Writer.writeUInt8(state);
+  Writer.writeInt(cid);
+  Writer.write(state);
 
   return Writer.getBufferCopy();
 };
