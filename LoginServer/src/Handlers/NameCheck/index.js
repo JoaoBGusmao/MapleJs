@@ -1,4 +1,4 @@
-import { askCenter } from '../../center';
+import { CenterCommunication } from '../../center';
 import charNameResponse from './send';
 import recv from './recv';
 import { NAME_CHECK_RESPONSE } from '../../Base/constants';
@@ -34,7 +34,7 @@ export default async (reader, client) => {
   try {
     // TODO: check can use this name
 
-    const nameCheckResponse = await askCenter({
+    const nameCheckResponse = await CenterCommunication({
       operation: 'CHARACTER/NAME_CHECK',
       data,
     });

@@ -1,6 +1,6 @@
 import recv from './recv';
 import { LoginFailed, LoginSuccess } from './send';
-import { askCenter } from '../../center';
+import { CenterCommunication } from '../../center';
 import { LOGIN_RESPONSE } from '../../Base/constants';
 import store from '../../Base/Redux/store';
 import { updateConnection } from '../../Base/Redux/Actions/connection';
@@ -30,7 +30,7 @@ export default async (reader, socket) => {
   try {
     const data = recv(reader);
 
-    const loginResponse = await askCenter({
+    const loginResponse = await CenterCommunication({
       operation: 'ACCOUNT/LOGIN_CHECK',
       data,
     });

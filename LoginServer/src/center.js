@@ -14,7 +14,7 @@ export const initCenter = () => {
   });
 };
 
-export const askCenter = data => new Promise((resolve, reject) => {
+export const CenterCommunication = data => new Promise((resolve, reject) => {
   const requestId = uid();
 
   const request = JSON.stringify({

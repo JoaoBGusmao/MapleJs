@@ -1,6 +1,6 @@
 import recv from './recv';
 import { askData } from '../../data';
-import { askCenter } from '../../center';
+import { CenterCommunication } from '../../center';
 import deleteCharResponse from '../DeleteCharacter/send';
 
 /* Business logic of CreateChar
@@ -72,7 +72,7 @@ export default async (reader, client) => {
 
     newCharData.account_id = client.account.account_id;
 
-    const creationResult = await askCenter({
+    const creationResult = await CenterCommunication({
       operation: 'CHARACTER/NEW',
       data: newCharData,
     });
