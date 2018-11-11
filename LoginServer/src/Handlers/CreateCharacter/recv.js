@@ -1,16 +1,16 @@
 export default (reader) => {
   try {
     const name = reader.readString();
-    const job = reader.readUInt32();
-    const face = reader.readUInt32();
-    const hair = reader.readUInt32();
-    const hairColor = reader.readUInt32();
-    const skinColor = reader.readUInt32();
-    const topWear = reader.readUInt32();
-    const bottomWear = reader.readUInt32();
-    const shoes = reader.readUInt32();
-    const weapon = reader.readUInt32();
-    const gender = reader.readUInt8();
+    const job = reader.readInt();
+    const face = reader.readInt();
+    const hair = reader.readInt();
+    const hairColor = reader.readInt();
+    const skin = reader.readInt();
+    const topWear = reader.readInt();
+    const bottomWear = reader.readInt();
+    const shoes = reader.readInt();
+    const weapon = reader.readInt();
+    const gender = reader.readByte();
 
     return ({
       name,
@@ -18,7 +18,7 @@ export default (reader) => {
       face,
       hair,
       hairColor,
-      skinColor,
+      skin,
       topWear,
       bottomWear,
       shoes,

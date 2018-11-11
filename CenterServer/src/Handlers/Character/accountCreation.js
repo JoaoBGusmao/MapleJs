@@ -19,9 +19,9 @@ export const nameCheck = async ({ name }) => {
 
 export const newCharacter = async (charData) => {
   try {
-    await registerNewCharacter(charData);
+    const newCharacterInformation = await registerNewCharacter(charData);
 
-    return { success: true };
+    return { success: true, newCharacterInformation };
   } catch (error) {
     return { sucess: false, error };
   }

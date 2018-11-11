@@ -29,7 +29,7 @@ export const askData = data => new Promise((resolve, reject) => {
   });
 
   const message = Buffer.from(request);
-  server.send(message, 0, message.length, 9595, '127.0.0.1');
+  server.send(message, 0, message.length, 3535, '127.0.0.1');
 
   setTimeout(() => {
     reject(new Error('DataServer Timeout'));

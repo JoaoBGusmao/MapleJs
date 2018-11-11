@@ -2,6 +2,7 @@ import recv from './recv';
 import { askData } from '../../data';
 import { CenterCommunication } from '../../center';
 import deleteCharResponse from '../DeleteCharacter/send';
+import addNewCharacter from './send';
 
 /* Business logic of CreateChar
  * Handler name: CreateCharHandler
@@ -15,7 +16,7 @@ import deleteCharResponse from '../DeleteCharacter/send';
  * - face
  * - hair
  * - hairColor
- * - skincolor
+ * - skin
  * - top
  * - bottom
  * - shoes
@@ -33,7 +34,7 @@ const validadeCharCreation = async ({
   face,
   hair,
   hairColor,
-  skinColor,
+  skin,
   topWear,
   bottomWear,
   shoes,
@@ -50,7 +51,7 @@ const validadeCharCreation = async ({
       checkData(face, genderData[0])
       && checkData(hair, genderData[1])
       && checkData(hairColor, genderData[2])
-      && checkData(skinColor, genderData[3])
+      && checkData(skin, genderData[3])
       && checkData(topWear, genderData[4])
       && checkData(bottomWear, genderData[5])
       && checkData(shoes, genderData[6])
@@ -61,6 +62,21 @@ const validadeCharCreation = async ({
     return false;
   }
 };
+
+const normalizeCharData = charData => ({
+  account_id: charData.account_id,
+  name: charData.name,
+  gender: charData.gender,
+  appearance: {
+    face: charData.face,
+    hair: charData.hair + charData.hairColor,
+    skin: charData.skin,
+  },
+  equips: {
+    shoes: charData.shoes,
+    weapon: charData.weapon,
+  },
+});
 
 export default async (reader, client) => {
   try {
@@ -74,12 +90,16 @@ export default async (reader, client) => {
 
     const creationResult = await CenterCommunication({
       operation: 'CHARACTER/NEW',
-      data: newCharData,
+      data: normalizeCharData(newCharData),
     });
 
-    console.log(creationResult);
+    if (!creationResult.success) {
+      throw new Error('Fail creating character');
+    }
 
-    return [];
+    return client.write(addNewCharacter({
+      character: creationResult.newCharacterInformation,
+    }));
   } catch (err) {
     return client.write(deleteCharResponse({ cid: 0, state: 6 }));
   }

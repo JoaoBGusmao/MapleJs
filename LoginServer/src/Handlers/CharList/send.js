@@ -20,7 +20,7 @@ export const setCharLook = (Writer, character) => {
 };
 
 export const setCharStats = (Writer, character) => {
-  Writer.writeInt(character.id);
+  Writer.writeInt(character.character_id);
   Writer.writeString(character.name, 13);
   Writer.write(character.gender);
   Writer.write(character.skin);
@@ -33,21 +33,21 @@ export const setCharStats = (Writer, character) => {
   // End Pet
   Writer.write(character.level);
   Writer.writeShort(character.job);
-  Writer.writeShort(character.str);
-  Writer.writeShort(character.dex);
-  Writer.writeShort(character.int);
-  Writer.writeShort(character.luk);
-  Writer.writeShort(character.hp);
-  Writer.writeShort(character.maxHp);
-  Writer.writeShort(character.mp);
-  Writer.writeShort(character.maxMp);
-  Writer.writeShort(character.ap);
-  Writer.writeShort(character.sp);
+  Writer.writeShort(character.STR);
+  Writer.writeShort(character.DEX);
+  Writer.writeShort(character.INT);
+  Writer.writeShort(character.LUK);
+  Writer.writeShort(character.HP);
+  Writer.writeShort(character.max_HP);
+  Writer.writeShort(character.MP);
+  Writer.writeShort(character.max_MP);
+  Writer.writeShort(character.AP);
+  Writer.writeShort(character.SP);
   Writer.writeInt(character.exp);
   Writer.writeShort(character.fame);
   Writer.writeInt(0);
   Writer.writeInt(character.map);
-  Writer.write(character.spawnPoint);
+  Writer.write(character.spawn_point);
   Writer.writeInt(0);
 };
 
