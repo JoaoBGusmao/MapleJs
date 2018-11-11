@@ -3,9 +3,9 @@ import { SEND_OPCODES } from '../../Base/constants';
 
 export const LoginFailed = ({ reason }) => {
   const Writer = new PacketWriter(SEND_OPCODES.LOGIN_STATUS);
-  Writer.writeUInt16(reason);
-  Writer.writeUInt32(0);
-  // Writer.writeUInt32(0);
+  Writer.write(reason);
+  Writer.write(0);
+  Writer.writeInt(0);
 
   return Writer.getBufferCopy();
 };
