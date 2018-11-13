@@ -15,7 +15,7 @@ export const getMakeCharInfo = async () => {
       return makeCharInfoCache;
     }
 
-    const dataFile = 'assets/Etc.wz/MakeCharInfo.img.xml';
+    const dataFile = 'DataServer/assets/Etc.wz/MakeCharInfo.img.xml';
     const loadedFile = fs.readFileSync(dataFile);
     const parsed = await parserSync(loadedFile);
 

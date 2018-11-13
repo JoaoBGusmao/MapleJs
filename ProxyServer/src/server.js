@@ -69,9 +69,10 @@ export default (port, serverPort) => {
     const packet = new PacketWriter();
     packet.writeShort(2 + 2 + '1'.length + 4 + 4 + 1);
     packet.writeShort(83);
-    packet.writeShort('1');
-    packet.write(currentSocket.sequence.client);
-    packet.write(currentSocket.sequence.server);
+    packet.writeShort(1);
+    packet.write(49);
+    packet.writeArray(currentSocket.sequence.client);
+    packet.writeArray(currentSocket.sequence.server);
     packet.write(8);
 
     const helloResponse = {

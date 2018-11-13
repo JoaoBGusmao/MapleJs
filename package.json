@@ -9,11 +9,11 @@
     "dev": "nodemon --exec babel-node index.js --inspect",
     "build": "rm -rf dist && mkdir dist && babel -d ./dist ./ --ignore node_modules -s",
     "start": "node dist/index.js",
-    "dev-center": "nodemon --exec babel-node ./CenterServer/index.js",
-    "dev-data": "nodemon --exec babel-node ./DataServer/index.js",
-    "dev-game": "nodemon --exec babel-node ./GameServer/index.js",
-    "dev-login": "nodemon --exec babel-node ./LoginServer/index.js",
-    "dev-proxy": "nodemon --exec babel-node ./ProxyServer/index.js"
+    "dev-center": "nodemon --exec babel-node --watch ./CenterServer ./CenterServer/index.js",
+    "dev-data": "nodemon --exec babel-node --watch ./DataServer ./DataServer/index.js",
+    "dev-game": "nodemon --exec babel-node --watch ./GameServer ./GameServer/index.js",
+    "dev-login": "nodemon --exec babel-node --watch ./LoginServer ./LoginServer/index.js",
+    "dev-proxy": "nodemon --exec babel-node --watch ./ProxyServer ./ProxyServer/index.js"
   },
   "keywords": [],
   "author": "",
