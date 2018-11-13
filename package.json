@@ -6,20 +6,32 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "babel": "babel-node index.js",
-    "dev": "nodemon --exec babel-node index.js",
+    "dev": "nodemon --exec babel-node index.js --inspect",
     "build": "rm -rf dist && mkdir dist && babel -d ./dist ./ --ignore node_modules -s",
-    "start": "node dist/index.js"
+    "start": "node dist/index.js",
+    "dev-center": "nodemon --exec babel-node ./CenterServer/index.js",
+    "dev-data": "nodemon --exec babel-node ./DataServer/index.js",
+    "dev-game": "nodemon --exec babel-node ./GameServer/index.js",
+    "dev-login": "nodemon --exec babel-node ./LoginServer/index.js",
+    "dev-proxy": "nodemon --exec babel-node ./ProxyServer/index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "crypto": "^1.0.1",
     "dotenv": "^6.0.0",
     "eslint": "^5.4.0",
-    "jest": "^23.5.0",
+    "mapleendian": "^1.0.9",
     "ramda": "^0.25.0",
-    "xml2js": "^0.4.19"
+    "redux": "^4.0.0",
+    "node-int64": "^0.4.0",
+    "uuid": "^3.3.2",
+    "xml2js": "^0.4.19",
+    "md5": "^2.2.1",
+    "mysql2": "^1.6.1",
+    "sequelize": "^4.38.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

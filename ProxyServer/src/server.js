@@ -67,12 +67,12 @@ export default (port, serverPort) => {
 
     // Send handshake
     const packet = new PacketWriter();
-    packet.writeUInt16(2 + 2 + '1'.length + 4 + 4 + 1);
-    packet.writeUInt16(83);
-    packet.writeString('1');
-    packet.writeBytes(currentSocket.sequence.client);
-    packet.writeBytes(currentSocket.sequence.server);
-    packet.writeUInt8(8);
+    packet.writeShort(2 + 2 + '1'.length + 4 + 4 + 1);
+    packet.writeShort(83);
+    packet.writeShort('1');
+    packet.write(currentSocket.sequence.client);
+    packet.write(currentSocket.sequence.server);
+    packet.write(8);
 
     const helloResponse = {
       sid: sessionId,
