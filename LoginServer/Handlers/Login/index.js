@@ -52,7 +52,6 @@ export default async (reader, socket) => {
 
     return client.write(LoginFailed({ reason: LOGIN_RESPONSE.SYSTEM_FAILURE }));
   } catch (err) {
-    console.log(err);
     return client.write(LoginFailed({ reason: LOGIN_RESPONSE.SYSTEM_FAILURE }));
   }
 };
