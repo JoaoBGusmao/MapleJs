@@ -45,3 +45,33 @@ export const getCharactersByAccountId = async (accountId) => {
 
   return characterList;
 };
+
+export const getCharacterById = async ({ characterId }) => {
+  try {
+    const character = await db.characters.findOne({
+      where: {
+        character_id: characterId,
+      },
+    });
+
+    if (character === null) {
+      throw new Error('Character not found');
+    }
+
+    return character;
+  } catch (err) {
+    return null;
+  }
+};
+
+export const deleteCharacter = async ({ characterId }) => {
+  try {
+    await db.characters.destroy({
+      where: { character_id: characterId },
+    });
+
+    return { success: true };
+  } catch (err) {
+    return { success: false };
+  }
+};

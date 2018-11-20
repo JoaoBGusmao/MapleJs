@@ -3,6 +3,7 @@ import { askData } from '../../data';
 import { CenterCommunication } from '../../center';
 import deleteCharResponse from '../DeleteCharacter/send';
 import addNewCharacter from './send';
+import { getAccount } from '../../Base/Redux/Selectors/account';
 
 /* Business logic of CreateChar
  * Handler name: CreateCharHandler
@@ -83,10 +84,10 @@ export default async (reader, client) => {
     const newCharData = recv(reader);
     const isValidSelection = await validadeCharCreation(newCharData);
     if (!isValidSelection) {
-      return client.write(deleteCharResponse({ cid: 0, state: 9 }));
+      return client.sendPacket(deleteCharResponse({ cid: 0, state: 9 }));
     }
 
-    newCharData.account_id = client.account.account_id;
+    newCharData.account_id = getAccount(client.sessionId).account_id;
 
     const creationResult = await CenterCommunication({
       operation: 'CHARACTER/NEW',
@@ -97,10 +98,10 @@ export default async (reader, client) => {
       throw new Error('Fail creating character');
     }
 
-    return client.write(addNewCharacter({
+    return client.sendPacket(addNewCharacter({
       character: creationResult.newCharacterInformation,
     }));
   } catch (err) {
-    return client.write(deleteCharResponse({ cid: 0, state: 6 }));
+    return client.sendPacket(deleteCharResponse({ cid: 0, state: 6 }));
   }
 };

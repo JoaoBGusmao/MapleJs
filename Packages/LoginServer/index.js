@@ -1,11 +1,14 @@
 import 'dotenv/config';
 import net from 'net';
-import { PacketReader } from 'mapleendian';
+import { PacketReader, PacketWriter } from 'mapleendian';
+import uid from 'uuid/v1';
+import crypto from 'crypto';
 import handler from './Handlers';
 import store from './Base/Redux/store';
 import { updateConnection } from './Base/Redux/Actions/connection';
 import { initCenter } from './center';
 import { initData } from './data';
+import MapleSocket from '../Common/MapleSocket';
 
 const LoginServer = (port) => {
   initCenter();
@@ -13,23 +16,89 @@ const LoginServer = (port) => {
 
   const server = net.createServer();
 
-  server.on('connection', (connection) => {
-    const socket = connection;
+  server.on('connection', (socket) => {
     console.log('New connection started');
+    const sessionId = uid();
+    const currentSocket = socket;
+    const sequence = {
+      client: new Uint8Array(crypto.randomBytes(4)),
+      server: new Uint8Array(crypto.randomBytes(4)),
+    };
 
-    socket.on('data', (receivedData) => {
-      const data = JSON.parse(receivedData);
-      const buffer = Buffer.from(data.packet);
-      const incommingPacket = new PacketReader(buffer);
-      socket.sid = data.sid;
+    currentSocket.header = true;
+    currentSocket.nextBlockLen = 4;
+    currentSocket.buffer = Buffer.alloc(0);
+    currentSocket.sequence = sequence;
+    currentSocket.sessionId = sessionId;
 
-      store.dispatch(updateConnection(socket));
+    // Send handshake
+    const packet = new PacketWriter();
+    packet.writeShort(2 + 2 + '1'.length + 4 + 4 + 1);
+    packet.writeShort(83);
+    packet.writeShort(1);
+    packet.write(49);
+    packet.writeArray(currentSocket.sequence.client);
+    packet.writeArray(currentSocket.sequence.server);
+    packet.write(8);
 
-      handler(incommingPacket.opCode, incommingPacket, socket);
+    const helloResponse = {
+      sid: sessionId,
+      packet: packet.getBufferCopy(),
+    };
+
+    currentSocket.write(JSON.stringify(helloResponse));
+
+    currentSocket.sendPacket = (data) => {
+      let buffer = Buffer.alloc(4);
+      MapleSocket.generateHeader(buffer, currentSocket.sequence.server, data.length, -(83 + 1));
+      currentSocket.write(buffer);
+
+      buffer = data;
+      MapleSocket.encryptData(buffer, currentSocket.sequence.server);
+
+      currentSocket.sequence.server = MapleSocket.morphSequence(currentSocket.sequence.server);
+
+      console.log('sent', Date.now());
+      currentSocket.write(buffer);
+    };
+
+    currentSocket.on('data', (receivedData) => {
+      currentSocket.pause();
+
+      console.log('received', Date.now());
+
+      const parsed = JSON.parse(receivedData);
+      const packetData = Buffer.from(parsed.packet);
+      const temp = currentSocket.buffer;
+      currentSocket.buffer = Buffer.concat([temp, packetData]);
+
+      while (currentSocket.nextBlockLen <= currentSocket.buffer.length) {
+        const data = currentSocket.buffer;
+
+        const block = Buffer.alloc(currentSocket.nextBlockLen);
+        data.copy(block, 0, 0, block.length);
+        currentSocket.buffer = Buffer.alloc(data.length - block.length);
+        data.copy(currentSocket.buffer, 0, block.length);
+
+        if (currentSocket.header) {
+          currentSocket.nextBlockLen = MapleSocket.getLengthFromHeader(block);
+        } else {
+          currentSocket.nextBlockLen = 4;
+          MapleSocket.decryptData(block, currentSocket.sequence.client);
+          currentSocket.sequence.client = MapleSocket.morphSequence(currentSocket.sequence.client);
+
+          const incommingPacket = new PacketReader(block);
+          updateConnection(currentSocket);
+          handler(incommingPacket.opCode, incommingPacket, currentSocket);
+        }
+
+        currentSocket.header = !currentSocket.header;
+      }
+      currentSocket.resume();
     });
   });
 
   server.listen(port);
 };
 
-LoginServer(7484);
+LoginServer(8484);

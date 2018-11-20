@@ -41,9 +41,9 @@ export default async (reader, client) => {
 
     const result = getResultCode(nameCheckResponse);
 
-    return client.write(charNameResponse({ name: data.name, result }));
+    return client.sendPacket(charNameResponse({ name: data.name, result }));
   } catch (err) {
-    return client.write(charNameResponse({
+    return client.sendPacket(charNameResponse({
       name: data.name,
       result: NAME_CHECK_RESPONSE.UNKNOWN_ERROR,
     }));

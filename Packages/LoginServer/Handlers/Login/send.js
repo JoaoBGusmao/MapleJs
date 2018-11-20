@@ -10,16 +10,21 @@ export const LoginFailed = ({ reason }) => {
   return Writer.getBufferCopy();
 };
 
-export const LoginSuccess = () => {
+export const LoginSuccess = ({
+  account_id,
+  username,
+  gender,
+}) => {
+  console.log('account', account_id, username, gender);
   const Writer = new PacketWriter(SEND_OPCODES.LOGIN_STATUS);
   Writer.writeInt(0);
   Writer.writeShort(0);
-  Writer.writeInt(1); // accountid
-  Writer.write(1); // gender
+  Writer.writeInt(account_id); // accountid
+  Writer.write(gender); // gender
   Writer.write(0); // admin
   Writer.write(0); // admin level
   Writer.write(0); // admin level
-  Writer.writeString('gmchuck');
+  Writer.writeString(username);
   Writer.write(0);
   Writer.write(0); // mute
   Writer.writeDate(0); // mute time

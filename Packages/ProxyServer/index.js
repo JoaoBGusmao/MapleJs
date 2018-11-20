@@ -3,7 +3,7 @@ import net from 'net';
 import crypto from 'crypto';
 import uid from 'uuid/v1';
 import { PacketWriter } from 'mapleendian';
-import MapleSocket from './MapleSocket';
+import MapleSocket from '../Common/MapleSocket';
 
 const realServer = (serverPort) => {
   const server = new net.Socket();

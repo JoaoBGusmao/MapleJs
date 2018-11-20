@@ -62,12 +62,12 @@ export const setCharacterInformation = (Writer, character) => {
   Writer.writeInt(1);
 };
 
-export const CharList = (characters) => {
+export const CharList = (account, characters) => {
   const Writer = new PacketWriter(SEND_OPCODES.CHAR_LIST);
   Writer.write(0);
   Writer.write(characters.length);
   characters.forEach(character => setCharacterInformation(Writer, character));
-  Writer.write(2);
+  Writer.write(account.PIC === '' ? 0 : 1);
   Writer.writeInt(3);
 
   return Writer.getBufferCopy();

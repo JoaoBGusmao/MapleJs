@@ -3,7 +3,7 @@ import { LoginFailed, LoginSuccess } from './send';
 import { CenterCommunication } from '../../center';
 import { LOGIN_RESPONSE } from '../../Base/constants';
 import store from '../../Base/Redux/store';
-import { updateConnection } from '../../Base/Redux/Actions/connection';
+import { updateAccount } from '../../Base/Redux/Actions/account';
 
 /* Business logic of LOGIN
  * Handler name: LoginPasswordHandler
@@ -36,22 +36,26 @@ export default async (reader, socket) => {
     });
 
     if (loginResponse.success) {
-      client.account = {};
-      client.account.account_id = loginResponse.account.account_id;
-      store.dispatch(updateConnection(client));
-      return client.write(LoginSuccess());
+      const action = {};
+      action[socket.sessionId] = {
+        ...loginResponse.account,
+      };
+
+      store.dispatch(updateAccount({ ...action }));
+      return client.sendPacket(LoginSuccess({ ...loginResponse.account }));
     }
 
     if (loginResponse.failedReason === 'LOGIN_NOT_FOUND') {
-      return client.write(LoginFailed({ reason: LOGIN_RESPONSE.LOGIN_NOT_FOUND }));
+      return client.sendPacket(LoginFailed({ reason: LOGIN_RESPONSE.LOGIN_NOT_FOUND }));
     }
 
     if (loginResponse.failedReason === 'WRONG_PASSWORD') {
-      return client.write(LoginFailed({ reason: LOGIN_RESPONSE.WRONG_PASSWORD }));
+      return client.sendPacket(LoginFailed({ reason: LOGIN_RESPONSE.WRONG_PASSWORD }));
     }
 
-    return client.write(LoginFailed({ reason: LOGIN_RESPONSE.SYSTEM_FAILURE }));
+    return client.sendPacket(LoginFailed({ reason: LOGIN_RESPONSE.SYSTEM_FAILURE }));
   } catch (err) {
-    return client.write(LoginFailed({ reason: LOGIN_RESPONSE.SYSTEM_FAILURE }));
+    console.log(err);
+    return client.sendPacket(LoginFailed({ reason: LOGIN_RESPONSE.SYSTEM_FAILURE }));
   }
 };

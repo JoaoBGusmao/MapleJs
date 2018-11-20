@@ -1,5 +1,6 @@
 import { CharList } from './send';
 import { CenterCommunication } from '../../center';
+import { getAccount } from '../../Base/Redux/Selectors/account';
 
 /* Business logic of CharList
  * Handler name: CharListRequestHandler
@@ -16,8 +17,9 @@ import { CenterCommunication } from '../../center';
 
 export default async (reader, client) => {
   try {
+    const account = getAccount(client.sessionId)
     const queryData = {
-      accountId: 1,
+      accountId: account.account_id,
     };
 
     const getCharacters = await CenterCommunication({
@@ -25,7 +27,7 @@ export default async (reader, client) => {
       data: queryData,
     });
 
-    client.write(CharList(getCharacters.characters));
+    client.sendPacket(CharList(account, getCharacters.characters));
   } catch (err) {
     console.log(err);
     return [];
