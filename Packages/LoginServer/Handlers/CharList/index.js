@@ -17,7 +17,7 @@ import { getAccount } from '../../Base/Redux/Selectors/account';
 
 export default async (reader, client) => {
   try {
-    const account = getAccount(client.sessionId)
+    const account = getAccount(client.sessionId);
     const queryData = {
       accountId: account.account_id,
     };

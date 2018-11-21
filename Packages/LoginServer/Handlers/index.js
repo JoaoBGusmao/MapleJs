@@ -7,6 +7,7 @@ import CharList from './CharList';
 import NameCheck from './NameCheck';
 import CreateCharacter from './CreateCharacter';
 import DeleteCharacter from './DeleteCharacter';
+import SelectCharacterWithPIC from './SelectCharacterWithPIC';
 
 const getHandler = cond([
   [propEq('header', 0x01), ({ reader, socket }) => Login(reader, socket)],
@@ -17,6 +18,7 @@ const getHandler = cond([
   [propEq('header', 0x15), ({ reader, socket }) => NameCheck(reader, socket)],
   [propEq('header', 0x16), ({ reader, socket }) => CreateCharacter(reader, socket)],
   [propEq('header', 0x17), ({ reader, socket }) => DeleteCharacter(reader, socket)],
+  [propEq('header', 0x1E), ({ reader, socket }) => SelectCharacterWithPIC(reader, socket)],
   [T, NoHandler],
 ]);
 
