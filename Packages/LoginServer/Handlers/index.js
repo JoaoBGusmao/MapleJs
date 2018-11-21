@@ -22,4 +22,4 @@ const getHandler = cond([
   [T, NoHandler],
 ]);
 
-export default (header, reader, socket) => console.log('incomming header', header) || getHandler({ header, reader, socket });
+export default (header, reader, socket) => getHandler({ header, reader, socket });

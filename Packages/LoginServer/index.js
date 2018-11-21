@@ -9,6 +9,9 @@ import { updateConnection, updateFakePorts } from './Base/Redux/Actions/connecti
 import { initCenter } from '../Common/Intercommunication/center';
 import { initData } from '../Common/Intercommunication/data';
 import MapleSocket from '../Common/MapleSocket';
+import ExecutionTimeClass from '../Common/ExecutionTime';
+
+global.ExecutionTime = new ExecutionTimeClass();
 
 const LoginServer = (port) => {
   initCenter();
@@ -17,6 +20,7 @@ const LoginServer = (port) => {
   const server = net.createServer();
 
   server.on('connection', (socket) => {
+    socket.setNoDelay(true);
     console.log('New connection started');
     const sessionId = uid();
     const currentSocket = socket;
@@ -51,22 +55,20 @@ const LoginServer = (port) => {
     currentSocket.sendPacket = (data) => {
       let buffer = Buffer.alloc(4);
       MapleSocket.generateHeader(buffer, currentSocket.sequence.server, data.length, -(83 + 1));
-      currentSocket.write(buffer);
-
+      const header = buffer;
       buffer = data;
       MapleSocket.encryptData(buffer, currentSocket.sequence.server);
 
       currentSocket.sequence.server = MapleSocket.morphSequence(currentSocket.sequence.server);
 
-      console.log('sent', Date.now());
-      currentSocket.write(buffer);
+      const ret = Buffer.alloc(buffer.length + 4);
+      header.copy(ret, 0, 0);
+      buffer.copy(ret, 4, 0);
+      currentSocket.write(ret);
     };
 
     currentSocket.on('data', (receivedData) => {
       currentSocket.pause();
-
-      console.log('received', Date.now());
-
       const parsed = JSON.parse(receivedData);
 
       if (parsed.plain && parsed.fakePorts) {
