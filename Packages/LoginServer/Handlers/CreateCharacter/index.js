@@ -1,6 +1,6 @@
 import recv from './recv';
-import { askData } from '../../data';
-import { CenterCommunication } from '../../center';
+import { askData } from '../../../Common/Intercommunication/data';
+import { CenterCommunication } from '../../../Common/Intercommunication/center';
 import deleteCharResponse from '../DeleteCharacter/send';
 import addNewCharacter from './send';
 import { getAccount } from '../../Base/Redux/Selectors/account';

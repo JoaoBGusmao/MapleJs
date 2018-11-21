@@ -1,5 +1,5 @@
 import { CharList } from './send';
-import { CenterCommunication } from '../../center';
+import { CenterCommunication } from '../../../Common/Intercommunication/center';
 import { getAccount } from '../../Base/Redux/Selectors/account';
 
 /* Business logic of CharList

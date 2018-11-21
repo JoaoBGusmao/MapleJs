@@ -8,13 +8,13 @@ export const WrongPIC = () => {
   return Writer.getBufferCopy();
 };
 
-export const ServerIP = ({ characterId }) => {
+export const ServerIP = (fakeServerPort, { characterId }) => {
   const Writer = new PacketWriter(SEND_OPCODES.SERVER_IP);
-  Writer.write(0);
-  Writer.write([127, 0, 0, 1]);
-  Writer.writeShort(7575);
+  Writer.writeShort(0);
+  Writer.writeArray([127, 0, 0, 1]);
+  Writer.writeShort(fakeServerPort);
   Writer.writeInt(characterId);
-  Writer.write([0, 0, 0, 0, 0]);
+  Writer.writeArray([0, 0, 0, 0, 0]);
 
   return Writer.getBufferCopy();
 };

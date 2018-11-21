@@ -3,12 +3,13 @@ import net from 'net';
 import { PacketReader, PacketWriter } from 'mapleendian';
 import uid from 'uuid/v1';
 import crypto from 'crypto';
-import handler from './Handlers';
+// import handler from './Handlers';
 import store from './Base/Redux/store';
 import { updateConnection, updateFakePorts } from './Base/Redux/Actions/connection';
 import { initCenter } from '../Common/Intercommunication/center';
 import { initData } from '../Common/Intercommunication/data';
 import MapleSocket from '../Common/MapleSocket';
+import Handlers from './Handlers';
 
 const LoginServer = (port) => {
   initCenter();
@@ -98,8 +99,9 @@ const LoginServer = (port) => {
           currentSocket.sequence.client = MapleSocket.morphSequence(currentSocket.sequence.client);
 
           const incommingPacket = new PacketReader(block);
+          console.log('received: ', block);
           updateConnection(currentSocket);
-          handler(incommingPacket.opCode, incommingPacket, currentSocket);
+          Handlers(incommingPacket.opCode, incommingPacket, currentSocket);
         }
 
         currentSocket.header = !currentSocket.header;
@@ -111,4 +113,4 @@ const LoginServer = (port) => {
   server.listen(port);
 };
 
-LoginServer(8484);
+LoginServer(7575);

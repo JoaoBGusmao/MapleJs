@@ -1,4 +1,4 @@
-import { CenterCommunication } from '../../center';
+import { CenterCommunication } from '../../../Common/Intercommunication/center';
 import charNameResponse from './send';
 import recv from './recv';
 import { NAME_CHECK_RESPONSE } from '../../Base/constants';

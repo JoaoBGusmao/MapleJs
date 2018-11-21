@@ -1,6 +1,6 @@
 import recv from './recv';
 import { LoginFailed, LoginSuccess } from './send';
-import { CenterCommunication } from '../../center';
+import { CenterCommunication } from '../../../Common/Intercommunication/center';
 import { LOGIN_RESPONSE } from '../../Base/constants';
 import store from '../../Base/Redux/store';
 import { updateAccount } from '../../Base/Redux/Actions/account';

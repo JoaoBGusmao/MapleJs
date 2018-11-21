@@ -1,7 +1,7 @@
 import deleteCharResponse from './send';
 import recv from './recv';
 import { getAccount } from '../../Base/Redux/Selectors/account';
-import { CenterCommunication } from '../../center';
+import { CenterCommunication } from '../../../Common/Intercommunication/center';
 import { checkPIC } from '../../Controllers/Account';
 
 /* Business logic of DeleteChar
