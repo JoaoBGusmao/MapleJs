@@ -1,8 +1,82 @@
 import { getAccount } from '../../../LoginServer/Base/Redux/Selectors/account';
 import recv from './recv';
 
-const stringToArray = (string) => {
-  return string.split(' ');
+const mockCharacter = {
+  name: 'Chuck',
+  gender: 0,
+  job: 0,
+  level: 15,
+  exp: 0,
+  fame: 0,
+  skin: 0,
+  hair: 30415,
+  face: 20022,
+  SP: 10,
+  AP: 10,
+  STR: 13,
+  DEX: 13,
+  INT: 13,
+  LUK: 13,
+  HP: 150,
+  max_HP: 150,
+  MP: 150,
+  max_MP: 150,
+  map: 910000000,
+  spawn_point: 0,
+  inventory: {
+    EQUIPPED: {
+      slots: 15,
+      items: {
+        0: { itemId: 100100 },
+      },
+    },
+    EQUIP: {
+      slots: 15,
+      items: {
+        0: { itemId: 100100 },
+      },
+    },
+    USE: {
+      slots: 15,
+      items: {
+        0: { itemId: 100100 },
+      },
+    },
+    SETUP: {
+      slots: 15,
+      items: {
+        0: { itemId: 100100 },
+      },
+    },
+    ETC: {
+      slots: 15,
+      items: {
+        0: { itemId: 100100 },
+      },
+    },
+    CASH: {
+      slots: 15,
+      items: {
+        0: { itemId: 100100 },
+      },
+    },
+  },
+  skills: [
+    { skillId: 100100, level: 10, masterLevel: 10 },
+    { skillId: 100100, level: 10, masterLevel: 10 },
+    { skillId: 100100, level: 10, masterLevel: 10 },
+  ],
+  cooldown: [
+    { skillId: 100100, timeStart: 0 },
+  ],
+  quests: [],
+  rings: [],
+  teleport: [],
+  monsterBook: {
+    cover: 0,
+    cards: [],
+  },
+  areaInfo: [], // search more about it
 };
 
 export default async (reader, client) => {
