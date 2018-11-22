@@ -68,7 +68,11 @@ const LoginServer = (port) => {
 
       console.log('received', Date.now());
 
-      const parsed = JSON.parse(receivedData);
+      let parsed = {};
+      try {
+        parsed = JSON.parse(receivedData);
+      } catch (err) {
+      }
 
       if (parsed.plain && parsed.fakePorts) {
         const action = {};
@@ -78,7 +82,7 @@ const LoginServer = (port) => {
         currentSocket.resume();
         return;
       }
-
+      if (!parsed.packet) return;
       const packetData = Buffer.from(parsed.packet);
       const temp = currentSocket.buffer;
       currentSocket.buffer = Buffer.concat([temp, packetData]);
