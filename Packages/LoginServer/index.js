@@ -3,7 +3,7 @@ import net from 'net';
 import { PacketReader, PacketWriter } from 'mapleendian';
 import uid from 'uuid/v1';
 import crypto from 'crypto';
-import handler from './Handlers';
+import handler from './Handlers/handlerSelector';
 import store from './Base/Redux/store';
 import { updateConnection, updateFakePorts } from './Base/Redux/Actions/connection';
 import { initCenter } from '../Common/Intercommunication/center';
