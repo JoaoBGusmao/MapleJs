@@ -1,11 +1,12 @@
+import { bindActionCreators } from 'redux';
 import read from './Login.read';
 import { LoginFailed, LoginSuccess } from './Login.write';
 import { CenterCommunication } from '../../../Common/Intercommunication/center';
 import { LOGIN_RESPONSE } from '../../Base/constants';
-import store from '../../Base/Redux/store';
-import { updateAccount } from '../../Base/Redux/Actions/account';
+import { updateAccount as updateAccountAction } from '../../Base/Redux/Actions/account';
+import connect from '../../Base/Redux/connect';
 
-export default async ({ reader, client }) => {
+const Login = async ({ reader, client, updateAccount }) => {
   try {
     const data = read(reader);
 
@@ -20,7 +21,7 @@ export default async ({ reader, client }) => {
         ...loginResponse.account,
       };
 
-      store.dispatch(updateAccount({ ...action }));
+      updateAccount({ ...action });
       return client.sendPacket(LoginSuccess({ ...loginResponse.account }));
     }
 
@@ -38,3 +39,9 @@ export default async ({ reader, client }) => {
     return client.sendPacket(LoginFailed({ reason: LOGIN_RESPONSE.SYSTEM_FAILURE }));
   }
 };
+
+const mapActions = dispatch => bindActionCreators({
+  updateAccount: updateAccountAction,
+}, dispatch);
+
+export default connect(undefined, mapActions)(Login);
