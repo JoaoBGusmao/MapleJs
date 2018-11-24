@@ -1,7 +1,4 @@
-import { PacketWriter } from 'mapleendian';
-import { SEND_OPCODES } from '../../Base/constants';
-
-export const setCharEquips = (Writer, character) => {
+export const setCharacterEquips = (Writer) => {
   Writer.write(255);
   Writer.write(255);
   Writer.writeInt(0);
@@ -10,16 +7,16 @@ export const setCharEquips = (Writer, character) => {
   Writer.writeInt(0);
 };
 
-export const setCharLook = (Writer, character) => {
+export const setCharacterLook = (Writer, character) => {
   Writer.write(character.gender);
   Writer.write(character.skin);
   Writer.writeInt(character.face);
   Writer.write(1);
   Writer.writeInt(character.hair); // hair
-  setCharEquips(Writer, character);
+  setCharacterEquips(Writer, character);
 };
 
-export const setCharStats = (Writer, character) => {
+export const setCharacterStats = (Writer, character) => {
   Writer.writeInt(character.character_id);
   Writer.writeString(character.name, 13);
   Writer.write(character.gender);
@@ -52,23 +49,12 @@ export const setCharStats = (Writer, character) => {
 };
 
 export const setCharacterInformation = (Writer, character) => {
-  setCharStats(Writer, character);
-  setCharLook(Writer, character);
+  setCharacterStats(Writer, character);
+  setCharacterLook(Writer, character);
   Writer.write(0);
   Writer.write(1);
   Writer.writeInt(1);
   Writer.writeInt(1);
   Writer.writeInt(1);
   Writer.writeInt(1);
-};
-
-export const CharList = (account, characters) => {
-  const Writer = new PacketWriter(SEND_OPCODES.CHAR_LIST);
-  Writer.write(0);
-  Writer.write(characters.length);
-  characters.forEach(character => setCharacterInformation(Writer, character));
-  Writer.write(account.PIC === '' ? 0 : 1);
-  Writer.writeInt(3);
-
-  return Writer.getBufferCopy();
 };

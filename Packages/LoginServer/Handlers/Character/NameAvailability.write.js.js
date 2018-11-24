@@ -2,7 +2,7 @@ import { PacketWriter } from 'mapleendian';
 import { SEND_OPCODES } from '../../Base/constants';
 
 export default ({ name, result }) => {
-  const Writer = new PacketWriter(SEND_OPCODES.CHAR_NAME_REQUEST);
+  const Writer = new PacketWriter(SEND_OPCODES.CHARACTER_NAME_REQUEST);
   Writer.writeString(name);
   Writer.write(result);
 

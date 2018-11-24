@@ -1,20 +1,7 @@
 import { CenterCommunication } from '../../../Common/Intercommunication/center';
-import charNameResponse from './send';
-import recv from './recv';
+import nameAvailabilityResponse from './NameAvailability.write.js';
+import read from './NameAvailability.read';
 import { NAME_CHECK_RESPONSE } from '../../Base/constants';
-
-/* Business logic of NameCheck
- * Handler name: CheckCharNameHandler
- *
- * This handle is responsable to verify
- * if a character name is available
- *
- * Received:
- * - name to check
- *
- * Expected:
- * - Is the name is available or note
- */
 
 const getResultCode = (result) => {
   if (result.success && result.failedReason === undefined) {
@@ -29,7 +16,7 @@ const getResultCode = (result) => {
 };
 
 export default async (reader, client) => {
-  const data = recv(reader);
+  const data = read(reader);
 
   try {
     // TODO: check can use this name
@@ -41,9 +28,9 @@ export default async (reader, client) => {
 
     const result = getResultCode(nameCheckResponse);
 
-    return client.sendPacket(charNameResponse({ name: data.name, result }));
+    return client.sendPacket(nameAvailabilityResponse({ name: data.name, result }));
   } catch (err) {
-    return client.sendPacket(charNameResponse({
+    return client.sendPacket(nameAvailabilityResponse({
       name: data.name,
       result: NAME_CHECK_RESPONSE.UNKNOWN_ERROR,
     }));

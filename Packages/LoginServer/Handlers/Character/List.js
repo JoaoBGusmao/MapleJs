@@ -1,19 +1,6 @@
-import { CharList } from './send';
+import CharacterList from './List.write';
 import { CenterCommunication } from '../../../Common/Intercommunication/center';
 import { getAccount } from '../../Base/Redux/Selectors/account';
-
-/* Business logic of CharList
- * Handler name: CharListRequestHandler
- *
- * This handle is responsable to show the
- * list of players in a world
- *
- * Received:
- * - nothing
- *
- * Expected:
- * - char list
- */
 
 export default async (reader, client) => {
   try {
@@ -27,9 +14,8 @@ export default async (reader, client) => {
       data: queryData,
     });
 
-    client.sendPacket(CharList(account, getCharacters.characters));
+    client.sendPacket(CharacterList(account, getCharacters.characters));
   } catch (err) {
     console.log(err);
-    return [];
   }
 };

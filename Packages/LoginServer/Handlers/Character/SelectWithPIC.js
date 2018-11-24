@@ -1,12 +1,12 @@
-import recv from './recv';
-import { WrongPIC, ServerIP } from './send';
+import read from './SelectWithPIC.read.js';
+import { WrongPIC, ServerIP } from './SelectWithPIC.write';
 import { getAccount } from '../../Base/Redux/Selectors/account';
 import { checkPIC } from '../../Controllers/Account';
 import { getFakePorts } from '../../Base/Redux/Selectors/connection';
 
 export default async (reader, client) => {
   try {
-    const { PIC, characterId, macs } = recv(reader);
+    const { PIC, characterId } = read(reader);
     const account = getAccount(client.sessionId);
     const fakePorts = getFakePorts(client.sessionId);
 
@@ -17,5 +17,6 @@ export default async (reader, client) => {
     return client.sendPacket(WrongPIC());
   } catch (err) {
     // unknown error
+    return [];
   }
 };

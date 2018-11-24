@@ -1,27 +1,12 @@
-import deleteCharResponse from './send';
-import recv from './recv';
+import deleteCharResponse from './Delete.write';
+import read from './Delete.read';
 import { getAccount } from '../../Base/Redux/Selectors/account';
 import { CenterCommunication } from '../../../Common/Intercommunication/center';
 import { checkPIC } from '../../Controllers/Account';
 
-/* Business logic of DeleteChar
- * Handler name: DeleteCharHandler
- *
- * This handle is responsable to delete
- * a character
- *
- * Received:
- * - pic
- * - cid
- *
- * Expected:
- * - success
- * || wrong pic
- */
-
 export default async (reader, client) => {
   try {
-    const { PIC, characterId } = recv(reader);
+    const { PIC, characterId } = read(reader);
 
     const account = getAccount(client.sessionId);
     const character = await CenterCommunication({

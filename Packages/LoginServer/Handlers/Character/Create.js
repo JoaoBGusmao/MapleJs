@@ -1,33 +1,9 @@
-import recv from './recv';
+import read from './Create.read';
 import { askData } from '../../../Common/Intercommunication/data';
 import { CenterCommunication } from '../../../Common/Intercommunication/center';
-import deleteCharResponse from '../DeleteCharacter/send';
-import addNewCharacter from './send';
+import deleteCharResponse from './Delete.write';
+import addNewCharacter from './Create.write';
 import { getAccount } from '../../Base/Redux/Selectors/account';
-
-/* Business logic of CreateChar
- * Handler name: CreateCharHandler
- *
- * This handle is responsable to create
- * a new character
- *
- * Received:
- * - name
- * - job
- * - face
- * - hair
- * - hairColor
- * - skin
- * - top
- * - bottom
- * - shoes
- * - weapon
- * - gender
- *
- * Expected:
- * - new char entry
- * || error
- */
 
 const checkData = (selection, compareData) => compareData.indexOf(selection) !== -1;
 
@@ -81,7 +57,7 @@ const normalizeCharData = charData => ({
 
 export default async (reader, client) => {
   try {
-    const newCharData = recv(reader);
+    const newCharData = read(reader);
     const isValidSelection = await validadeCharCreation(newCharData);
     if (!isValidSelection) {
       return client.sendPacket(deleteCharResponse({ cid: 0, state: 9 }));
