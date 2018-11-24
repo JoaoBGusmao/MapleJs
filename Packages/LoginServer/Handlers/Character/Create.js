@@ -55,7 +55,7 @@ const normalizeCharData = charData => ({
   },
 });
 
-export default async (reader, client) => {
+export default async ({ reader, client }) => {
   try {
     const newCharData = read(reader);
     const isValidSelection = await validadeCharCreation(newCharData);

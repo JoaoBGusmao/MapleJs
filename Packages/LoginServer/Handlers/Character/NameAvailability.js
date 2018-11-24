@@ -15,7 +15,7 @@ const getResultCode = (result) => {
   return NAME_CHECK_RESPONSE.UNKNOWN_ERROR;
 };
 
-export default async (reader, client) => {
+export default async ({ reader, client }) => {
   const data = read(reader);
 
   try {

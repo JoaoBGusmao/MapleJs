@@ -4,7 +4,7 @@ import { getAccount } from '../../Base/Redux/Selectors/account';
 import { CenterCommunication } from '../../../Common/Intercommunication/center';
 import { checkPIC } from '../../Controllers/Account';
 
-export default async (reader, client) => {
+export default async ({ reader, client }) => {
   try {
     const { PIC, characterId } = read(reader);
 

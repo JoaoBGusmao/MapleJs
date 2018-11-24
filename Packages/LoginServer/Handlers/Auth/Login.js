@@ -5,9 +5,7 @@ import { LOGIN_RESPONSE } from '../../Base/constants';
 import store from '../../Base/Redux/store';
 import { updateAccount } from '../../Base/Redux/Actions/account';
 
-export default async (reader, socket) => {
-  const client = socket;
-
+export default async ({ reader, client }) => {
   try {
     const data = read(reader);
 
@@ -18,7 +16,7 @@ export default async (reader, socket) => {
 
     if (loginResponse.success) {
       const action = {};
-      action[socket.sessionId] = {
+      action[client.sessionId] = {
         ...loginResponse.account,
       };
 

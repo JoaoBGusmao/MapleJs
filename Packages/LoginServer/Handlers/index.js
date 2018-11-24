@@ -10,16 +10,16 @@ import DeleteCharacter from './Character/Delete';
 import SelectCharacterWithPIC from './Character/SelectWithPIC';
 
 const getHandler = cond([
-  [propEq('header', 0x01), ({ reader, socket }) => Login(reader, socket)],
-  [propEq('header', 0x04), ({ reader, socket }) => ServerList(reader, socket)],
-  [propEq('header', 0x05), ({ reader, socket }) => CharacterList(reader, socket)],
-  [propEq('header', 0x06), ({ reader, socket }) => ServerStatus(reader, socket)],
-  [propEq('header', 0x0B), ({ reader, socket }) => ServerList(reader, socket)],
-  [propEq('header', 0x1E), ({ reader, socket }) => SelectCharacterWithPIC(reader, socket)],
-  [propEq('header', 0x15), ({ reader, socket }) => NameAvailability(reader, socket)],
-  [propEq('header', 0x16), ({ reader, socket }) => CreateCharacter(reader, socket)],
-  [propEq('header', 0x17), ({ reader, socket }) => DeleteCharacter(reader, socket)],
+  [propEq('header', 0x01), Login],
+  [propEq('header', 0x04), ServerList],
+  [propEq('header', 0x05), CharacterList],
+  [propEq('header', 0x06), ServerStatus],
+  [propEq('header', 0x0B), ServerList],
+  [propEq('header', 0x1E), SelectCharacterWithPIC],
+  [propEq('header', 0x15), NameAvailability],
+  [propEq('header', 0x16), CreateCharacter],
+  [propEq('header', 0x17), DeleteCharacter],
   [T, NoHandler],
 ]);
 
-export default (header, reader, socket) => getHandler({ header, reader, socket });
+export default (header, reader, client) => getHandler({ header, reader, client });
