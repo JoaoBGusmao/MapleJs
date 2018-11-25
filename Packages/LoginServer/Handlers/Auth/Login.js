@@ -17,12 +17,10 @@ const Login = async ({ reader, client, updateAccount }) => {
 
     if (loginResponse.success) {
       const action = {};
-      action[client.sessionId] = {
-        ...loginResponse.account,
-      };
+      action[client.sessionId] = loginResponse.account;
 
       updateAccount({ ...action });
-      return client.sendPacket(LoginSuccess({ ...loginResponse.account }));
+      return client.sendPacket(LoginSuccess(loginResponse.account));
     }
 
     if (loginResponse.failedReason === 'LOGIN_NOT_FOUND') {

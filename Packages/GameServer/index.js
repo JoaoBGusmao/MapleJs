@@ -9,7 +9,7 @@ import { updateConnection, updateFakePorts } from './Base/Redux/Actions/connecti
 import { initCenter } from '../Common/Intercommunication/center';
 import { initData } from '../Common/Intercommunication/data';
 import MapleSocket from '../Common/MapleSocket';
-import Handlers from './Handlers';
+import Handlers from './Handlers/handlerSelector';
 
 const LoginServer = (port) => {
   initCenter();
