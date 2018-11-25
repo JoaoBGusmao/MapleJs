@@ -3,6 +3,7 @@ export const RECEIVE_OPCODES = {
 };
 
 export const SEND_OPCODES = {
+  SET_FIELD: 0X7D,
 };
 
 export const CONNECTION_CONSTS = {
