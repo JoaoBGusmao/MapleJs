@@ -1,6 +1,6 @@
 import EnterChannelWrite from './EnterChannel.write';
 
-describe('Enter Channel', () => {
+describe.skip('Enter Channel', () => {
   const character = {
     name: 'Chuck',
     gender: 0,

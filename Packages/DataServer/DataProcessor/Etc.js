@@ -1,3 +1,4 @@
+/* eslint-disable import/prefer-default-export */
 import xml2js from 'xml2js';
 import fs from 'fs';
 import { promisify } from 'util';
@@ -41,5 +42,3 @@ export const getMakeCharInfo = async () => {
     return null;
   }
 };
-
-export const nothing = () => {};
