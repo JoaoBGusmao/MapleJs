@@ -70,6 +70,11 @@ describe('get Map', () => {
           y: 450,
           tm: 999999999,
           tn: '',
+          delay: -1,
+          hideTooltip: -1,
+          onlyOnce: -1,
+          horizontalImpact: -1,
+          script: '',
         },
         {
           pn: 'sp',
@@ -78,6 +83,11 @@ describe('get Map', () => {
           y: 453,
           tm: 999999999,
           tn: '',
+          hideTooltip: -1,
+          onlyOnce: -1,
+          script: '',
+          horizontalImpact: -1,
+          delay: -1,
         },
         {
           pn: 'sp',
@@ -86,6 +96,11 @@ describe('get Map', () => {
           y: 451,
           tm: 999999999,
           tn: '',
+          hideTooltip: -1,
+          onlyOnce: -1,
+          script: '',
+          horizontalImpact: -1,
+          delay: -1,
         },
         {
           pn: 'out00',
@@ -97,6 +112,7 @@ describe('get Map', () => {
           script: '',
           hideTooltip: 0,
           onlyOnce: 0,
+          horizontalImpact: -1,
           delay: 0,
         },
         {
@@ -134,6 +150,9 @@ describe('get Map', () => {
           tn: '',
           horizontalImpact: 0,
           script: 'glTutoMsg0',
+          delay: -1,
+          hideTooltip: -1,
+          onlyOnce: -1,
         },
         {
           pn: 'glBmsg1',
@@ -144,7 +163,10 @@ describe('get Map', () => {
           tn: '',
           horizontalImpact: 0,
           script: 'glTutoMsg0',
-        }
+          delay: -1,
+          hideTooltip: -1,
+          onlyOnce: -1,
+        },
       ],
     };
 
